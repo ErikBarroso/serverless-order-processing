@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  api:
+    build: .  # Aqui ele irá procurar pelo Dockerfile no diretório atual
+    ports:
+      - "3000:3000"  # Expondo a porta 3000 do contêiner na porta 3000 da sua máquina local
+    environment:
+      - DB_HOST=db  # Se a API usa alguma variável de ambiente para conectar ao DB
+    volumes:
+    - .:/src
+    networks:
+      - app_network
+    command: ["npm", "run", "dev"] 
+
+  db:
+    image: localstack/localstack:latest  # Imagem do LocalStack, emulando o DynamoDB
+    ports:
+      - "4566:4566"  # Expondo a porta do LocalStack
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"  # Para usar o Docker dentro do contêiner
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
