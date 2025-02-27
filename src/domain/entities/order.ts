@@ -1,10 +1,10 @@
-import { OrderItem } from "./order-item";
+import { Product } from "./product";
 
 export type Order = {
     id: string;
     customerId: string;
     orderStatus: OrderStatus;
-    items: OrderItem[];
+    items: Product[];
     createdAt: Date
 }
 
