@@ -1,5 +1,18 @@
 import express, { Response, Request } from 'express';
 import dotenv from 'dotenv';
+import AWS from 'aws-sdk';
+
+AWS.config.update({
+    region:'us-east-1',
+})
+
+const dynamoDB = new AWS.DynamoDB({
+    endpoint: 'http://localhost:4566',
+});
+
+const docClient = new AWS.DynamoDB.DocumentClient({
+    endpoint: 'http://localhost:4566',
+});
 
 dotenv.config();
 const app = express();
