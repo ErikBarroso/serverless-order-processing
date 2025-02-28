@@ -1,0 +1,21 @@
+###
+GET http://localhost:3000
+
+###
+POST http://localhost:3000/api/product
+Content-Type: application/json
+
+{
+    "name": "teste",
+    "price": 303,
+    "stock": 50
+}
+
+###
+DELETE http://localhost:3000/api/product/d660a5c2-1182-44c9-9cdb-3cc5416b7ab0
+###
+
+GET http://localhost:3000/api/product/b2dcc9ca-0e38-4605-afc5-340dde1f484e
+
+###
+GET http://localhost:3000/api/products
