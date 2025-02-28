@@ -2,7 +2,7 @@
 GET http://localhost:3000
 
 ###
-POST http://localhost:3000/api/product
+POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
@@ -12,10 +12,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/product/d660a5c2-1182-44c9-9cdb-3cc5416b7ab0
+DELETE http://localhost:3000/api/products/d660a5c2-1182-44c9-9cdb-3cc5416b7ab0
 ###
 
-GET http://localhost:3000/api/product/b2dcc9ca-0e38-4605-afc5-340dde1f484e
+GET http://localhost:3000/api/products/b2dcc9ca-0e38-4605-afc5-340dde1f484e
 
 ###
 GET http://localhost:3000/api/products

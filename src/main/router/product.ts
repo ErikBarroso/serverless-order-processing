@@ -13,10 +13,10 @@ const docClient = new AWS.DynamoDB.DocumentClient({
     endpoint: 'http://db:4566',
 });
 
-const router = Router();
+const productRouter  = Router();
 
 //creat
-router.post('/product/', (req,res) => {
+productRouter.post('/', (req,res) => {
     const { name, price, stock} = req.body
     const params = {
         TableName: 'Product',
@@ -38,7 +38,7 @@ router.post('/product/', (req,res) => {
 
 //delet
 
-router.delete('/product/:id', (req,res) => {
+productRouter.delete('/:id', (req,res) => {
     const id = req.params.id
     docClient.delete({Key: {id}, TableName: 'Product'}, (err, data) => {
         // tratamento para buscar o item no banco antes de mandar deletar
@@ -51,7 +51,7 @@ router.delete('/product/:id', (req,res) => {
 })
 
 // get item
-router.get('/product/:id', (req,res) => {
+productRouter.get('/:id', (req,res) => {
     const id = req.params.id
     docClient.get({Key: {id}, TableName: 'Product'}, (err, data) => {
         if(err) {
@@ -63,7 +63,7 @@ router.get('/product/:id', (req,res) => {
 })
 
 // get items all
-router.get('/products', (req,res) => {
+productRouter.get('/', (req,res) => {
     docClient.scan({TableName: 'Product'}, (err, data) => {
         if(err) {
             console.error('DynamoDB Error:', err);
@@ -73,4 +73,4 @@ router.get('/products', (req,res) => {
     })
 })
 
-export default router;
+export default productRouter;
