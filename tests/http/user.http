@@ -1,0 +1,21 @@
+###
+GET http://localhost:3000
+
+###
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "name": "erik",
+    "email": "erik@live.com",
+    "password": "abs2313"
+}
+
+###
+DELETE http://localhost:3000/api/users/26ea5b97-5af0-4520-bd00-1fef64f8b2ff
+###
+
+GET http://localhost:3000/api/users/0e97d713-4a0c-4528-add5-44b3bca64e21
+
+###
+GET http://localhost:3000/api/users
