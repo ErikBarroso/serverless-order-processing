@@ -19,8 +19,11 @@ services:
       - "4566:4566"  # Expondo a porta do LocalStack
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
+      - DATA_DIR=/var/lib/localstack
+      - PERSISTENCE=1
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"  # Para usar o Docker dentro do contêiner
+      - "./localstack_data:/var/lib/localstack"   # Persistindo os dados localmente
     networks:
       - app_network
 
