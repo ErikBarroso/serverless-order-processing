@@ -4,13 +4,13 @@ export type Order = {
     id: string;
     customerId: string;
     orderStatus: OrderStatus;
-    items: Product[];
-    createdAt: Date
+    items: Product['id'][];
+    createdAt: string;
 }
 
 export enum OrderStatus {
-    'PENDING',
-    'PROCESSING',
-    'COMPLETED',
-    'CANCELLED'
+    PENDING = 'Pending',
+    PROCESSING = 'Processing',
+    COMPLETED= 'Completed',
+    CANCELLED = 'Cancelleds'
 }

@@ -6,22 +6,22 @@ POST http://localhost:3000/api/orders
 Content-Type: application/json
 
 {
-    "customerId": "0e97d713-4a0c-4528-add5-44b3bca64e21",
+    "customerId": "0e97d713-4a0c-4528-add5-44b3bca64e25",
     "items": [
         {
-            "id": "ed276d18-5a3a-4ebd-b700-906100533c8a"
+            "id": "ed276d18-5a3a-4ebd-b700-906100533c82"
         },
         {
-            "id": "b2dcc9ca-0e38-4605-afc5-340dde1f484e"
+            "id": "b2dcc9ca-0e38-4605-afc5-340dde1f4845"
         }
     ]
 }
 
 ###
-DELETE http://localhost:3000/api/orders/e61da7b3-fa81-4396-8334-1006327042a6
+DELETE http://localhost:3000/api/orders/7e1152ab-fc04-4921-ba61-f9a74342b7e4s
 ###
 
-GET http://localhost:3000/api/orders/e61da7b3-fa81-4396-8334-1006327042a6
+GET http://localhost:3000/api/orders/f329b2a7-aac3-486b-be03-ab93353fcec7
 
 ###
 GET http://localhost:3000/api/orders
