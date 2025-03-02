@@ -18,6 +18,7 @@ export default [
       'object-curly-spacing': ['error', 'always'], // Adiciona espaço dentro de { chaves }
       '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
       '@typescript-eslint/explicit-function-return-type': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
       'keyword-spacing': ['error', { 'before': true, 'after': true }],
       'space-before-blocks': ['error', 'always'],
     },
