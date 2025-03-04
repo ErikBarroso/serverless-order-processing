@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest --runInBand --coverage",
     "test:unit": "jest --testPathPattern tests/unit --watch --noStackTrace --detectOpenHandles ",
+    "test:integration": "jest --testPathPattern tests/integration --noStackTrace --detectOpenHandles ",
     "dev": "nodemon --ext ts --exec ts-node ./src/server.ts"
   },
   "keywords": [],

@@ -16,7 +16,7 @@ export class DynamoOrderRepository implements OrderRepository {
   }
 
   async delete(id: string, userId: string): Promise<void> {
-    docClient.delete({ Key: { id }, TableName: this.TABLE_NAME }).promise();
+    await docClient.delete({ Key: { id }, TableName: this.TABLE_NAME }).promise();
   }
 
   async findById(id: string, userId: string): Promise<Order | null> {
