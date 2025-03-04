@@ -1,5 +1,6 @@
 /** @type {import('jest').Config} */
-export default {
+// eslint-disable-next-line no-undef
+module.exports = {
   roots: ['<rootDir>/src', '<rootDir>/tests'],
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
   coverageDirectory: '<rootDir>/coverage',
