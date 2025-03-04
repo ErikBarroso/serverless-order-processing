@@ -9,6 +9,7 @@ services:
       - "3000:3000"  # Expondo a porta 3000 do contêiner na porta 3000 da sua máquina local
     environment:
       - DB_HOST=db  # Se a API usa alguma variável de ambiente para conectar ao DB
+      - DYNAMODB_ENDPOINT=http://db:4566
     volumes:
     - .:/src
     networks:

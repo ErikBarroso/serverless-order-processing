@@ -11,5 +11,5 @@ AWS.config.update({
 });
 
 export const docClient = new AWS.DynamoDB.DocumentClient({
-  endpoint: process.env.DYNAMODB_ENDPOINT || 'http://db:4566',
+  endpoint: process.env.DYNAMODB_ENDPOINT,
 });
