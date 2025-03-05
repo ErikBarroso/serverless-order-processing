@@ -14,15 +14,18 @@ describe('DynamoOrderRepository', () => {
 
   beforeAll(async () => {
     sut = new DynamoOrderRepository();
-    const result = await sut.create(testOrder);
-    expect(result).toBeDefined();
   }, 50000);
+
+  it('should create a order successfully', async () => {
+    await sut.create(testOrder);   
+    const order = await sut.findById(testOrder.id, testOrder.customerId);
+    expect(order).toEqual(testOrder);
+  });
 
   it('should delete a order successfully', async () => {
     await sut.delete(testOrder.id, testOrder.customerId);
-
-    const product = await sut.findById(testOrder.id, testOrder.customerId);
-    expect(product).toBeUndefined();
+    const order = await sut.findById(testOrder.id, testOrder.customerId);
+    expect(order).toBeUndefined();
   }, 50000);
 
   afterAll(async () => {
