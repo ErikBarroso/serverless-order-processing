@@ -26,6 +26,6 @@ export class DynamoProductRepository implements ProductRepository {
 
   async findAll(): Promise<Product[]> {
     const result = await docClient.scan({ TableName: this.TABLE_NAME }).promise();
-    return result.Items as Product[] | [];
+    return result.Items as Product[];
   }
 }

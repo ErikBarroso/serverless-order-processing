@@ -28,6 +28,6 @@ export class DynamoOrderRepository implements OrderRepository {
   async findAll(userId: string): Promise<Order[]> {
     // ver pra buscar só as order q o user criou
     const result = await docClient.scan({ TableName: this.TABLE_NAME }).promise();
-    return result.Items as Order[] | [];
+    return result.Items as Order[];
   }
 }
