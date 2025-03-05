@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.9",
     "add": "^2.0.6",
     "aws-sdk": "^2.1692.0",
     "cors": "^2.8.5",
