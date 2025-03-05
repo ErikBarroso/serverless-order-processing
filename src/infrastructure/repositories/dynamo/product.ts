@@ -16,7 +16,7 @@ export class DynamoProductRepository implements ProductRepository {
   }
 
   async delete(id: string): Promise<void> {
-    docClient.delete({ Key: { id }, TableName: this.TABLE_NAME }).promise();
+    await docClient.delete({ Key: { id }, TableName: this.TABLE_NAME }).promise();
   }
 
   async findById(id: string): Promise<Product | null> {
