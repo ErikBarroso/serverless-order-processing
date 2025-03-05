@@ -1,14 +1,13 @@
 import { JWT } from '../../data/utils/jwt';
-import { JwtConfig } from '../../data/utils/jwt-config';
 import jsonWebToken from 'jsonwebtoken';
 import { Token } from '../../domain/protocols/token';
 
 export class JsonWebToken implements JWT {
-  async sign(data: any, config: JwtConfig): Promise<string> {
+  async sign(data: any, key: string, expiresIn: number ): Promise<string> {
     return jsonWebToken.sign(
       data, 
-      config.key, 
-      { expiresIn: config.expiresIn * 60 },
+      key, 
+      { expiresIn: expiresIn * 60 },
     );
   }
 
