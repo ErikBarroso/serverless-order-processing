@@ -2,31 +2,22 @@ import bcrypt from 'bcryptjs';
 import { Encrypter } from '../../data/utils/encrypter';
 
 export default class Bcrypt implements Encrypter {
-  async hash(value: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const saltRounds = 10;
-      bcrypt.genSalt(saltRounds, (errSalt, salt) => {
-        if (errSalt) {
-          reject(errSalt);
-        }
-        bcrypt.hash(value, salt, (errHash, hash) => {
-          if (errHash) {
-            reject(errHash);
-          }
-          resolve(hash);
-        });
-      });
-    });
+  async hash(value: string): Promise<string | null> {
+    try {
+      const salt = await bcrypt.genSalt(10);
+      return bcrypt.hash(value, salt);
+    } catch (error) {
+      console.error('Erro ao comparar senha: ' + error);
+      return null;
+    }
   }
 
   async compare(value: string, hash: string): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      bcrypt.compare(value, hash, (err, result) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(result);
-      });
-    });
+    try {
+      return await bcrypt.compare(value, hash);
+    } catch (error) {
+      console.error('Erro ao comparar senha', error);
+      return false;
+    }
   }
 }
