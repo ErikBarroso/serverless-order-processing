@@ -8,10 +8,10 @@ export class DeleteOrderController implements Controller {
   constructor( private readonly useCase: DeleteOrderUseCase) {}
 
   async handle(request: PresentationRequest): Promise<PresentationResponse> {
-    const { items } = request.body;
+    const { id }  = request.params;
     const userId = request.currentUser as string;
     try {
-      const result = await this.useCase.exec(items, userId);
+      const result = await this.useCase.exec(id, userId);
       return serverResponse(result);      
     } catch (error) {
       return errorResponse(error);    
