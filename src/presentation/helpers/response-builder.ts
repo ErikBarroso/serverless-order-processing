@@ -12,7 +12,7 @@ export const errorResponse = (error: any): PresentationResponse =>  {
 };
 
 
-export const successResponse = (data: any): PresentationResponse => ({
-  statusCode: 200,
+export const serverResponse = (data: any): PresentationResponse => ({
+  statusCode: data.code ?? 200,
   body: data,
 });

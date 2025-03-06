@@ -1,5 +1,5 @@
 import { LoginUseCase } from '../../../domain/use-cases/auth/login';
-import { errorResponse, successResponse } from '../../helpers/response-builder';
+import { errorResponse, serverResponse } from '../../helpers/response-builder';
 import { Controller } from '../../protocols/controller';
 import { PresentationRequest, PresentationResponse } from '../../protocols/reqRes';
 
@@ -10,7 +10,7 @@ export class LoginController implements Controller {
     try {
       const { email, password } = request.body;
       const result = await this.useCase.exec(email, password);
-      return successResponse(result);    
+      return serverResponse(result);    
     } catch (error) {
       return errorResponse(error);  
     }

@@ -1,5 +1,5 @@
 import { DeleteProductUseCase } from '../../../domain/use-cases/product/delete-product';
-import { errorResponse, successResponse } from '../../helpers/response-builder';
+import { errorResponse, serverResponse } from '../../helpers/response-builder';
 import { Controller } from '../../protocols/controller';
 import { PresentationRequest, PresentationResponse } from '../../protocols/reqRes';
 
@@ -11,7 +11,7 @@ export class DeleteProductController implements Controller {
     const { id } = request.params;
     try {
       const result = await this.useCase.exec(id);
-      return successResponse(result);      
+      return serverResponse(result);      
     } catch (error) {
       return errorResponse(error);    
     }

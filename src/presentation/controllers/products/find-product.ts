@@ -1,5 +1,5 @@
 import { FindProductsUseCase } from '../../../domain/use-cases/product/find-products';
-import { errorResponse, successResponse } from '../../helpers/response-builder';
+import { errorResponse, serverResponse } from '../../helpers/response-builder';
 import { Controller } from '../../protocols/controller';
 import { PresentationRequest, PresentationResponse } from '../../protocols/reqRes';
 
@@ -11,7 +11,7 @@ export class FindProductsController implements Controller {
   async handle(request: PresentationRequest): Promise<PresentationResponse> {
     try {
       const result = await this.useCase.exec();
-      return successResponse(result);      
+      return serverResponse(result);      
     } catch (error) {
       return errorResponse(error);    
     }
