@@ -1,5 +1,5 @@
 import { CreateOrderUseCase } from '../../../domain/use-cases/order/create-order';
-import { errorResponse, successResponse } from '../../helpers/response-builder';
+import { errorResponse, serverResponse } from '../../helpers/response-builder';
 import { Controller } from '../../protocols/controller';
 import { PresentationRequest, PresentationResponse } from '../../protocols/reqRes';
 
@@ -8,11 +8,11 @@ export class CreateOrderController implements Controller {
   constructor( private readonly useCase: CreateOrderUseCase) {}
 
   async handle(request: PresentationRequest): Promise<PresentationResponse> {
-    const { items, customerId } = request.body;
+    const { items } = request.body;
+    const userId = request.currentUser as string;
     try {
-      // dps pegar o user logado
-      const result = await this.useCase.exec(items, customerId);
-      return successResponse(result);      
+      const result = await this.useCase.exec(items, userId);
+      return serverResponse(result);      
     } catch (error) {
       return errorResponse(error);    
     }

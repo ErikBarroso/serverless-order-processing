@@ -4,9 +4,9 @@ GET http://localhost:3000
 ###
 POST http://localhost:3000/api/orders
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
 
 {
-    "customerId": "0e97d713-4a0c-4528-add5-44b3bca64e25",
     "items": [
         {
             "id": "ed276d18-5a3a-4ebd-b700-906100533c82"
@@ -19,9 +19,12 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/api/orders/7e1152ab-fc04-4921-ba61-f9a74342b7e4s
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
 ###
 
 GET http://localhost:3000/api/orders/f329b2a7-aac3-486b-be03-ab93353fcec7
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
 
 ###
 GET http://localhost:3000/api/orders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
