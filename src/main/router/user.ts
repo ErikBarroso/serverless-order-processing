@@ -1,6 +1,7 @@
 import { randomUUID } from 'crypto';
 import { Router } from 'express';
 import AWS from 'aws-sdk';
+import Bcrypt from '../../infrastructure/encrypters/bcrypt';
 
 AWS.config.update({
   region:'us-east-1',
@@ -12,28 +13,40 @@ AWS.config.update({
 const docClient = new AWS.DynamoDB.DocumentClient({
   endpoint: 'http://db:4566',
 });
-
+//refactor essa rota
 const userRouter  = Router();
 
+const bcrypt = new Bcrypt();
+
 //creat
-userRouter.post('/', (req,res) => {
+userRouter.post('/', async (req, res) => {
   const { name, email, password } = req.body;
-  const params = {
-    TableName: 'Users',
-    Item: {
-      id: randomUUID(),
-      name,
-      email,
-      password,
-    },
-  };
-  docClient.put(params, (err, data) => {
-    if (err) {
-      console.error('DynamoDB Error:', err);
-      return res.status(500).json({ error: 'erro ao add user', details: err });
-    }
-    res.status(201).json({ message: 'user adicionado com sucesso', data });
-  });
+  
+  try {
+    const hashedPassword = await bcrypt.hash(password);  
+  
+    const params = {
+      TableName: 'Users',
+      Item: {
+        id: randomUUID(),
+        name,
+        email,
+        password: hashedPassword,  
+      },
+    };
+  
+    docClient.put(params, (err, data) => {
+      if (err) {
+        console.error('DynamoDB Error:', err);
+        return res.status(500).json({ error: 'Erro ao adicionar usuário', details: err });
+      }
+      res.status(201).json({ message: 'Usuário adicionado com sucesso', data });
+    });
+  
+  } catch (error) {
+    console.error('Erro ao criar hash da senha:', error);
+    res.status(500).json({ error: 'Erro ao processar a senha' });
+  }
 });
 
 //delet
