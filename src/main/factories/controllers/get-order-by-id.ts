@@ -1,4 +1,4 @@
-import { GetOrderByIdUseCaseImpl } from '../../../data/useCases/order/get-order';
+import { GetOrderByIdUseCaseImpl } from '../../../data/use-cases/order/get-order';
 import { DynamoOrderRepository } from '../../../infrastructure/repositories/dynamo/order';
 import { GetOrderByIdController } from '../../../presentation/controllers/orders/get-order-by-id';
 

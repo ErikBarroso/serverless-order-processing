@@ -1,4 +1,4 @@
-import { FindProductsUseCaseImpl } from '../../../../data/useCases/product/find-products';
+import { FindProductsUseCaseImpl } from '../../../../data/use-cases/product/find-products';
 import { DynamoProductRepository } from '../../../../infrastructure/repositories/dynamo/product';
 import { FindProductsController } from '../../../../presentation/controllers/products/find-product';
 

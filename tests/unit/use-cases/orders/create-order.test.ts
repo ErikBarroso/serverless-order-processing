@@ -1,4 +1,4 @@
-import { CreateOrderUseCaseImpl } from '../../../../src/data/useCases/order/create-orders';
+import { CreateOrderUseCaseImpl } from '../../../../src/data/use-cases/order/create-orders';
 import { created } from '../../../../src/data/utils/result';
 import mockedOrder from '../../../utils/mocks/order';
 import { DynamoOrderRepositoryStub } from '../../../utils/stubs/repositories/dynamo/order';

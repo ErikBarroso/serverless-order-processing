@@ -1,4 +1,4 @@
-import { FindProductsUseCaseImpl } from '../../../../src/data/useCases/product/find-products';
+import { FindProductsUseCaseImpl } from '../../../../src/data/use-cases/product/find-products';
 import {  ok } from '../../../../src/data/utils/result';
 import mockedProduct from '../../../utils/mocks/product';
 import { DynamoProductRepositoryStub } from '../../../utils/stubs/repositories/dynamo/product';

@@ -1,4 +1,4 @@
-import { GetProductByIdUseCaseImpl } from '../../../../data/useCases/product/get-product';
+import { GetProductByIdUseCaseImpl } from '../../../../data/use-cases/product/get-product';
 import { DynamoProductRepository } from '../../../../infrastructure/repositories/dynamo/product';
 import { GetProductByIdController } from '../../../../presentation/controllers/products/get-product-by-id';
 

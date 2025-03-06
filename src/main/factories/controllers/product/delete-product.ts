@@ -1,4 +1,4 @@
-import { DeleteProductUseCaseImpl } from '../../../../data/useCases/product/delete-product';
+import { DeleteProductUseCaseImpl } from '../../../../data/use-cases/product/delete-product';
 import { DynamoProductRepository } from '../../../../infrastructure/repositories/dynamo/product';
 import { DeleteProductController } from '../../../../presentation/controllers/products/delete-product';
 

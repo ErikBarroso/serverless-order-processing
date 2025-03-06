@@ -1,4 +1,4 @@
-import { DeleteOrderUseCaseImpl } from '../../../data/useCases/order/delete-orders';
+import { DeleteOrderUseCaseImpl } from '../../../data/use-cases/order/delete-orders';
 import { DynamoOrderRepository } from '../../../infrastructure/repositories/dynamo/order';
 import { DeleteOrderController } from '../../../presentation/controllers/orders/delete-order';
 

@@ -1,4 +1,4 @@
-import { FindOrdersUseCaseImpl } from '../../../data/useCases/order/find-orders';
+import { FindOrdersUseCaseImpl } from '../../../data/use-cases/order/find-orders';
 import { DynamoOrderRepository } from '../../../infrastructure/repositories/dynamo/order';
 import { FindOrdersController } from '../../../presentation/controllers/orders/find-orders';
 

@@ -1,4 +1,4 @@
-import { DeleteProductUseCaseImpl } from '../../../../src/data/useCases/product/delete-product';
+import { DeleteProductUseCaseImpl } from '../../../../src/data/use-cases/product/delete-product';
 import {  ok } from '../../../../src/data/utils/result';
 import { DynamoProductRepositoryStub } from '../../../utils/stubs/repositories/dynamo/product';
 

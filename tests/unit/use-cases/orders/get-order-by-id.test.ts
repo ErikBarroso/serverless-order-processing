@@ -1,4 +1,4 @@
-import { GetOrderByIdUseCaseImpl } from '../../../../src/data/useCases/order/get-order';
+import { GetOrderByIdUseCaseImpl } from '../../../../src/data/use-cases/order/get-order';
 import {  ok } from '../../../../src/data/utils/result';
 import mockedOrder from '../../../utils/mocks/order';
 import { DynamoOrderRepositoryStub } from '../../../utils/stubs/repositories/dynamo/order';

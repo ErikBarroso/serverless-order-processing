@@ -1,4 +1,4 @@
-import { CreateOrderUseCaseImpl } from '../../../data/useCases/order/create-orders';
+import { CreateOrderUseCaseImpl } from '../../../data/use-cases/order/create-orders';
 import { DynamoOrderRepository } from '../../../infrastructure/repositories/dynamo/order';
 import { CreateOrderController } from '../../../presentation/controllers/orders/create-order';
 

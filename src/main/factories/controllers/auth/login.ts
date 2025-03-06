@@ -1,4 +1,4 @@
-import { LoginUseCaseImpl } from '../../../../data/useCases/auth/login';
+import { LoginUseCaseImpl } from '../../../../data/use-cases/auth/login';
 import Bcrypt from '../../../../infrastructure/encrypters/bcrypt';
 import { JsonWebToken } from '../../../../infrastructure/encrypters/jwt';
 import { DynamoUserRepository } from '../../../../infrastructure/repositories/dynamo/user';
