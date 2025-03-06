@@ -19,12 +19,24 @@ export class DynamoUserRepository implements UserRepository {
     await docClient.delete({ Key: { id }, TableName: this.TABLE_NAME }).promise();
   }
 
-  async findByIdOrEmail(id?: string, email?: string): Promise<Customer | null> {
-    const keyCondition = id ? { id } : { email };
-    const result = await docClient.get({ Key: keyCondition, TableName: this.TABLE_NAME }).promise();
-    return result.Item as Customer;
+  async findById(id: string): Promise<Customer | null> {
+    const result = await docClient.get({ Key: { id }, TableName: this.TABLE_NAME }).promise();
+    return result.Item as Customer || null;
   }
 
+  async findByEmail(email: string): Promise<Customer | null> {
+    const params = {
+      TableName: this.TABLE_NAME,
+      IndexName: 'email-index', 
+      KeyConditionExpression: 'email = :email',
+      ExpressionAttributeValues: {
+        ':email': email,
+      },
+    };
+    const result = await docClient.query(params).promise();
+    return result.Items?.[0] as Customer || null; 
+  }
+  
   async findAll(): Promise<Customer[]> {
     const result = await docClient.scan({ TableName: this.TABLE_NAME }).promise();
     return result.Items as Customer[];

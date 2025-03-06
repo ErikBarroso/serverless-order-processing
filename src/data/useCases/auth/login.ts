@@ -12,7 +12,7 @@ export class LoginUseCaseImpl implements LoginUseCase {
   ) {}
 
   async exec(email: string, password: string): Promise<LoginUseCaseResult> {
-    const user = await this.userRepository.findByIdOrEmail(email);
+    const user = await this.userRepository.findByEmail(email);
     if (!user) {
       return unauthorized('Email ou senha inválido');
     }
@@ -22,10 +22,11 @@ export class LoginUseCaseImpl implements LoginUseCase {
       return unauthorized('Email ou senha inválido');
     }
 
-    const accessToken = await this.jwt.sign({
+    const accessToken = await this.jwt.sign({ 
       id: user.id }, 
     process.env.JWT_SECRET || 'defaultKey', 
     parseInt(process.env.JWT_EXPIRES_IN as string) || 60);
+
     const result: LoginUseCaseResult = {
       accessToken,
       user : {
