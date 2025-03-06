@@ -1,15 +1,23 @@
 import { Response, Request } from 'express';
 import { Controller } from '../../presentation/protocols/controller';
 
+export interface RequestMain extends Request {
+    currentUser?: string
+}
+
 const adaptRoute = (factoryFn: () => Controller<any>) => (
-  async (req: Request, res: Response): Promise<void> =>  {
+  async (req: RequestMain, res: Response): Promise<void> =>  {
     const httpRequest = {
+      request: {
+        verb: req.method,
+        path: req.path,
+        route: req.route.path,
+      },
       body: req.body,
-      params: req.params,
       query: req.query,
-      headers: req.headers,
-      method: req.method,
-      path: req.path,
+      params: req.params,
+      headers: req.header ,
+      currentUser: req.currentUser,
     };
 
     const controller = factoryFn();
