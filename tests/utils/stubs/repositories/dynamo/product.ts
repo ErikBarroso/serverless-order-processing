@@ -17,6 +17,10 @@ export class DynamoProductRepositoryStub implements ProductRepository {
     return Promise.resolve([mockedProduct]);
   }
 
+  findByName(): Promise<Product[]> {
+    return Promise.resolve([mockedProduct]);
+  }
+
   findById(id: string): Promise<Product | null> {
     return Promise.resolve(mockedProduct);
   }

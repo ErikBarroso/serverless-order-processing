@@ -59,7 +59,7 @@ userRouter.delete('/:id', (req,res) => {
       console.error('DynamoDB Error:', err);
       return res.status(500).json({ error: 'erro ao deletar user', details: err });
     }
-    res.status(201).json({ message: 'user deletado com sucesso' });
+    res.status(200).json({ message: 'user deletado com sucesso' });
   });
 });
 
@@ -71,7 +71,7 @@ userRouter.get('/:id', (req,res) => {
       console.error('DynamoDB Error:', err);
       return res.status(500).json({ error: 'erro ao buscar user', details: err });
     }
-    res.status(201).json({ data });
+    res.status(200).json({ data });
   });
 });
 
@@ -82,7 +82,7 @@ userRouter.get('/', (req,res) => {
       console.error('DynamoDB Error:', err);
       return res.status(500).json({ error: 'erro buscar users', details: err });
     }
-    res.status(201).json({ data });
+    res.status(200).json({ data });
   });
 });
 

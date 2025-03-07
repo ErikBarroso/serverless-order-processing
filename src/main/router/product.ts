@@ -6,6 +6,7 @@ import deleteProduct from '../factories/controllers/product/delete-product';
 import createProduct from '../factories/controllers/product/create-product';
 import adaptMiddleware from '../adpters/express-middleware-adpter';
 import authorizator from '../factories/middlewares/authorizator';
+import getProductByName from '../factories/controllers/product/get-product-by-name';
 
 const productRouter  = Router();
 
@@ -19,9 +20,14 @@ productRouter.delete('/:id',
   adaptRoute(deleteProduct),
 );
 
-productRouter.get('/:id', 
+productRouter.get('/id/:id', 
   adaptMiddleware(authorizator),
   adaptRoute(getProductById),
+);
+
+productRouter.get('/name/:name', 
+  adaptMiddleware(authorizator),
+  adaptRoute(getProductByName),
 );
 
 productRouter.get('/', adaptRoute(findProducts));
