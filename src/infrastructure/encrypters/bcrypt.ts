@@ -7,7 +7,7 @@ export default class Bcrypt implements Encrypter {
       const salt = await bcrypt.genSalt(10);
       return bcrypt.hash(value, salt);
     } catch (error) {
-      console.error('Erro ao comparar senha: ' + error);
+      console.error('Erro hash: ' + error);
       return null;
     }
   }
