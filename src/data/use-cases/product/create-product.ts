@@ -10,7 +10,7 @@ export class CreateProductUseCaseImpl implements CreateProductUseCase {
   async exec(item: Omit<Product, 'id'>): Promise<Product> {
     const product: Product = {
       id: randomUUID(),
-      name: item.name,
+      name: item.name.toLowerCase(),
       price: item.price,
       stock: item.stock,
     };
