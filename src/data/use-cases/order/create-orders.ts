@@ -14,14 +14,11 @@ export class CreateOrderUseCaseImpl implements CreateOrderUseCase {
 
   async exec(items: Product['id'][], customerId: string): Promise<Order> {
     const productsDb = await this.productRepo.findAll();
-    const productsIds = new Set(productsDb.map(product => product.id));
-
-    const notFoundItems  = items.filter(itemId => !productsIds.has(itemId));
-    if (notFoundItems.length > 0) {
-      return notFound('Produtos não encontrados!');
+    const notFoundProducts = items.filter(item => !productsDb.some(product => product.id === item));
+    if (notFoundProducts.length > 0) {
+      return notFound('Algum dos produtos enviados são inválidos!');
     }
     
-    // verificar se os meus items existem no products
     const order: Order = {
       id: randomUUID(),
       customerId,
