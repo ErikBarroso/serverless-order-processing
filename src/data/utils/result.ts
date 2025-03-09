@@ -27,3 +27,9 @@ export const forbidden = (msg?: string, data?: any): any => ({
   msg,
   data,
 });
+
+export const notFound = (msg?: string, data?: any): any => ({
+  code: 404,
+  msg,
+  data,
+});
