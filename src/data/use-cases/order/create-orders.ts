@@ -12,9 +12,10 @@ export class CreateOrderUseCaseImpl implements CreateOrderUseCase {
     private readonly productRepo: ProductRepository,
   ) {}
 
-  async exec(items: Product['id'][], customerId: string): Promise<Order> {
+  async exec(products: Product['id'][], customerId: string): Promise<Order> {
     const productsDb = await this.productRepo.findAll();
-    const notFoundProducts = items.filter(item => !productsDb.some(product => product.id === item));
+    
+    const notFoundProducts = products.filter(product => !productsDb.some(productDb => productDb.id === product));
     if (notFoundProducts.length > 0) {
       return notFound('Algum dos produtos enviados são inválidos!');
     }
@@ -23,7 +24,7 @@ export class CreateOrderUseCaseImpl implements CreateOrderUseCase {
       id: randomUUID(),
       customerId,
       orderStatus: OrderStatus.PENDING,
-      items,
+      items: products,
       createdAt: new Date().toISOString(),
     };
 
