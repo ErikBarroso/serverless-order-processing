@@ -1,11 +1,14 @@
 import { CreateOrderUseCaseImpl } from '../../../data/use-cases/order/create-orders';
 import { DynamoOrderRepository } from '../../../infrastructure/repositories/dynamo/order';
+import { DynamoProductRepository } from '../../../infrastructure/repositories/dynamo/product';
 import { CreateOrderController } from '../../../presentation/controllers/orders/create-order';
 
 export default (): CreateOrderController => {
-  const repo = new DynamoOrderRepository();
+  const odersRepo = new DynamoOrderRepository();
+  const productRepo = new DynamoProductRepository();
   const useCase = new CreateOrderUseCaseImpl(
-    repo,
+    odersRepo,
+    productRepo,
   );
   const controller = new CreateOrderController(
     useCase,
