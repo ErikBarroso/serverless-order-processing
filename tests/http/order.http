@@ -4,27 +4,23 @@ GET http://localhost:3000
 ###
 POST http://localhost:3000/api/orders
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYxMzA1MywiZXhwIjoxNzQxNjE2NjUzfQ.yE3sw4XL_l49QhB8V5Y50Y7hzbO4jXQo_wojDCcYWG8
 
 {
     "items": [
-        {
-            "id": "ed276d18-5a3a-4ebd-b700-906100533c82"
-        },
-        {
-            "id": "b2dcc9ca-0e38-4605-afc5-340dde1f4845"
-        }
+            "b2dcc9ca-0e38-4605-afc5-340dde1f484e",
+            "b2dcc9ca-0e38-4605-afc5-340dde1f484e"
     ]
 }
 
 ###
-DELETE http://localhost:3000/api/orders/7e1152ab-fc04-4921-ba61-f9a74342b7e4s
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
+DELETE http://localhost:3000/api/orders/d6bd20ed-5fc9-42bb-b486-c152d01e44e4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYxMzA1MywiZXhwIjoxNzQxNjE2NjUzfQ.yE3sw4XL_l49QhB8V5Y50Y7hzbO4jXQo_wojDCcYWG8
 ###
 
 GET http://localhost:3000/api/orders/f329b2a7-aac3-486b-be03-ab93353fcec7
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAyNWI5NjViLTExZDQtNGQyZS1iYWEzLTg0MzcxZjY5OTAxOCIsImlhdCI6MTc0MTYxMjI2MSwiZXhwIjoxNzQxNjE1ODYxfQ.mHGxKZ4aBK8mHxSz8WmXYtbznDwAVEcx44A7VX-g9fs
 
 ###
 GET http://localhost:3000/api/orders
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYxMzA1MywiZXhwIjoxNzQxNjE2NjUzfQ.yE3sw4XL_l49QhB8V5Y50Y7hzbO4jXQo_wojDCcYWG8

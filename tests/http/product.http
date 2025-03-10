@@ -4,21 +4,26 @@ GET http://localhost:3000
 ###
 POST http://localhost:3000/api/products
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
 
 {
-    "name": "teste",
+    "name": "celular",
     "price": 303,
     "stock": 50
 }
 
 ###
-DELETE http://localhost:3000/api/products/d660a5c2-1182-44c9-9cdb-3cc5416b7ab0
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
+DELETE http://localhost:3000/api/products/79c344fe-40de-4863-a794-c5745db2d1b2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
 ###
 
-GET http://localhost:3000/api/products/b2dcc9ca-0e38-4605-afc5-340dde1f484e
+GET http://localhost:3000/api/products/id/f09c7319-1240-4d8f-b6ea-b7af16870665
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
 
 ###
 GET http://localhost:3000/api/products
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMjAwZmRiLWQ1MTMtNDA5Ny04NDEzLTkzYjFhNDcwZjJhNCIsImlhdCI6MTc0MTI4NDAwNCwiZXhwIjoxNzQxMjg3NjA0fQ.dAMRjJI2EMkRGfuyrAVlPDwRDpdOWBeEj-2QBa38JNs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
+
+###
+GET http://localhost:3000/api/products/name/CelUlar
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
