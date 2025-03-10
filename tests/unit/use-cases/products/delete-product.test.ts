@@ -1,5 +1,6 @@
 import { DeleteProductUseCaseImpl } from '../../../../src/data/use-cases/product/delete-product';
 import {  ok } from '../../../../src/data/utils/result';
+import mockedProduct from '../../../utils/mocks/product';
 import { DynamoProductRepositoryStub } from '../../../utils/stubs/repositories/dynamo/product';
 
 interface SutTypes {
@@ -23,6 +24,6 @@ describe('DeleteProductUseCaseImpl', () => {
     const { sut } = makeSut();
     const res = await sut.exec('id-01');
 
-    expect(res).toEqual(ok('Produto deletado com sucesso!'));
+    expect(res).toEqual(ok('Produto deletado com sucesso!', mockedProduct));
   });
 });

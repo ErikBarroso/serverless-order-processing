@@ -1,5 +1,6 @@
 import { DeleteOrderUseCaseImpl } from '../../../../src/data/use-cases/order/delete-orders';
 import {  ok } from '../../../../src/data/utils/result';
+import mockedOrder from '../../../utils/mocks/order';
 import { DynamoOrderRepositoryStub } from '../../../utils/stubs/repositories/dynamo/order';
 
 interface SutTypes {
@@ -23,6 +24,6 @@ describe('DeleteOrderUseCaseImpl', () => {
     const { sut } = makeSut();
     const res = await sut.exec('id-01', 'customerId');
 
-    expect(res).toEqual(ok('Pedido deletado com sucesso!'));
+    expect(res).toEqual(ok('Pedido deletado com sucesso!', mockedOrder));
   });
 });
