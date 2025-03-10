@@ -7,7 +7,6 @@ export class FindOrdersUseCaseImpl implements FindOrdersUseCase {
   constructor(private readonly repo: OrderRepository) {}
 
   async exec(userId: string): Promise<Order[]> {
-    // buscar user
     const orders = await this.repo.findAll(userId);
     return ok('Ação realizada com sucesso',orders);
   }

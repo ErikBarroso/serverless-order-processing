@@ -7,7 +7,6 @@ export class GetOrderByIdUseCaseImpl implements GetOrderByIdUseCase {
   constructor(private readonly repo: OrderRepository) {}
 
   async exec(id: Order['id'], userId: string): Promise<Order> {
-    // buscar user
     const order = await this.repo.findById(id, userId);
     return ok('Ação realizada com sucesso!', order);
   }
