@@ -22,7 +22,7 @@ export class CreateOrderUseCaseImpl implements CreateOrderUseCase {
     
     const order: Order = {
       id: randomUUID(),
-      customerId,
+      customerId: customerId.toLowerCase(),
       orderStatus: OrderStatus.PENDING,
       items: products,
       createdAt: new Date().toISOString(),

@@ -14,8 +14,8 @@ export class CreateUserUseCaseImpl implements CreateUserUseCase {
   async exec(data: Omit<Customer, 'id'>): Promise<Customer> {
     const user: Customer = {
       id: randomUUID(),
-      email: data.email ,
-      name: data.name ,
+      email: data.email.toLowerCase(),
+      name: data.name.toLowerCase(),
       password: await this.encrypter.hash(data.password) as string,
     };
     const result = await this.repo.create(user);
