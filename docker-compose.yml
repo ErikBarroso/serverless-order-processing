@@ -3,13 +3,12 @@ version: '3.7'
 services:
   api:
     build: .  # Aqui ele irá procurar pelo Dockerfile no diretório atual
-    env_file:
-      - .env
     ports:
       - "3000:3000"  # Expondo a porta 3000 do contêiner na porta 3000 da sua máquina local
-    environment:
+    environment:  
       - DB_HOST=db  # Se a API usa alguma variável de ambiente para conectar ao DB
       - DYNAMODB_ENDPOINT=http://db:4566
+      - EC2_ENDPOINT=http://db:4566
     volumes:
     - .:/src
     networks:
@@ -17,15 +16,14 @@ services:
     command: ["npm", "run", "dev"] 
 
   db:
-    image: localstack/localstack:latest  # Imagem do LocalStack, emulando o DynamoDB
-    env_file:
-      - .env
+    image: localstack/localstack:latest  # Imagem do LocalStack, emulando o DynamoDB e ec2
     ports:
       - "4566:4566"  # Expondo a porta do LocalStack
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
       - DATA_DIR=/var/lib/localstack
       - PERSISTENCE=1
+      - SERVICES=dynamodb,ec2
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"  # Para usar o Docker dentro do contêiner
       - "./localstack_data:/var/lib/localstack"   # Persistindo os dados localmente
