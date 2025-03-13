@@ -9,8 +9,6 @@ services:
       - DB_HOST=db  # Se a API usa alguma variável de ambiente para conectar ao DB
       - DYNAMODB_ENDPOINT=http://db:4566
       - EC2_ENDPOINT=http://db:4566
-    volumes:
-    - .:/src
     networks:
       - app_network
     command: ["npm", "run", "dev"] 
