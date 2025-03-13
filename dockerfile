@@ -4,9 +4,7 @@ WORKDIR /src
 
 COPY package.json ./
 
-RUN npm install
-RUN npm install -g nodemon
-RUN npm install -g ts-node
+RUN npm ci
 
 COPY . .
 
