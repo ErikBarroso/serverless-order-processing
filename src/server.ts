@@ -16,13 +16,13 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 async function checkServerStartMode(): Promise<void> {
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'development') {
+    const isEc2Running = await checkEc2InstanceStatus();
+    if (!isEc2Running) {
+      return console.error('A instância EC2 não está ativa.');
+    }
+  
     return startAppServer();
-  }
-
-  const isEc2Running = await checkEc2InstanceStatus();
-  if (!isEc2Running) {
-    return console.error('A instância EC2 não está ativa.');
   }
 
   startAppServer();
