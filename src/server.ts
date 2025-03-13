@@ -15,15 +15,23 @@ app.get('/', (req: Request, res: Response) => {
   res.status(200).send('Order API is active!');
 });
 
-async function startServer(): Promise<void> {
+async function checkServerStartMode(): Promise<void> {
+  if (process.env.NODE_ENV === 'production') {
+    return startAppServer();
+  }
+
   const isEc2Running = await checkEc2InstanceStatus();
   if (!isEc2Running) {
     return console.error('A instância EC2 não está ativa.');
   }
 
+  startAppServer();
+}
+
+function startAppServer(): void {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running at PORT: ${PORT}`);
   });
 }
 
-startServer();
+checkServerStartMode();
