@@ -3,6 +3,7 @@ version: '3.7'
 services:
   api:
     build: .  # Aqui ele irá procurar pelo Dockerfile no diretório atual
+    mem_limit: 4g
     ports:
       - "3000:3000"  # Expondo a porta 3000 do contêiner na porta 3000 da sua máquina local
     environment:  
