@@ -9,11 +9,8 @@ ENV NODE_OPTIONS="--max-old-space-size=1024"
 COPY package*.json ./
 RUN npm install --production
 
-# Copiar o restante do código
-COPY . .
-
-# Compilar TypeScript para JavaScript
-RUN npm run build
+# Copiar apenas a pasta dist (compilada localmente)
+COPY dist ./dist
 
 # Expor a porta da aplicação
 EXPOSE 3000

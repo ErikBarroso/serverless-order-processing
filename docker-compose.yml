@@ -12,8 +12,8 @@ services:
       - EC2_ENDPOINT=http://db:4566
     networks:
       - app_network
-    command: ["npm", "run", "dev", "--", "--max-old-space-size=8192"]
-
+    command: ["node", "--max-old-space-size=8192", "./src/server.ts"]
+    
   db:
     image: localstack/localstack:latest  # Imagem do LocalStack, emulando o DynamoDB e ec2
     ports:
