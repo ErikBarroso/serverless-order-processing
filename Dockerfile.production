@@ -1,15 +1,22 @@
 FROM node:20-alpine
-  
+
 WORKDIR /app
 
 # Aumentar a memória disponível para o Node.js
 ENV NODE_OPTIONS="--max-old-space-size=1024"
 
+# Copiar e instalar dependências
 COPY package*.json ./
-RUN npm install
+RUN npm install --production
 
+# Copiar o restante do código
 COPY . .
 
+# Compilar TypeScript para JavaScript
+RUN npm run build
+
+# Expor a porta da aplicação
 EXPOSE 3000
 
-CMD ["npx", "ts-node", "src/server.ts"] 
+# Rodar a aplicação
+CMD ["node", "dist/server.js"]
