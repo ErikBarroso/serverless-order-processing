@@ -1,0 +1,34 @@
+name: Deploy to AWS ECS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Log in to Docker Hub
+      run: |
+        echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+    - name: Build and Push Docker Image
+      run: |
+        IMAGE_NAME="${{ secrets.DOCKER_HUB_USERNAME }}/nome-da-imagem"
+        IMAGE_TAG="${{ github.sha }}"
+        
+        docker build -t $IMAGE_NAME:$IMAGE_TAG .
+        docker push $IMAGE_NAME:$IMAGE_TAG
+
+    - name: Deploy to Amazon ECS
+      uses: aws-actions/amazon-ecs-deploy@v1
+      with:
+        cluster: ${{ secrets.AWS_ECS_CLUSTER }}
+        service: ${{ secrets.AWS_ECS_SERVICE }}
+        image: ${{ secrets.DOCKER_HUB_USERNAME }}/nome-da-imagem:${{ github.sha }}
+        region: ${{ secrets.AWS_REGION }}
