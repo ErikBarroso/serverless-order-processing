@@ -12,7 +12,7 @@ const PORT = parseInt(process.env.PORT || '3000') ;
 app.use('/api', router);
 
 app.get('/', (req: Request, res: Response) => {
-  res.status(200).send('Order API is active!');
+  res.status(200).send('Order API is active! TESTE DEPLOY');
 });
 
 async function checkServerStartMode(): Promise<void> {
