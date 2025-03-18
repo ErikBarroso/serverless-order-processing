@@ -30,7 +30,7 @@ async function checkServerStartMode(): Promise<void> {
 
 function startAppServer(): void {
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running at PORT: ${PORT}`);
+    console.log(` TESTE DEPLOY: ${PORT}`);
   });
 }
 
