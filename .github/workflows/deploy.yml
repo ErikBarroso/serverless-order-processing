@@ -33,4 +33,4 @@ jobs:
 
     - name: Deploy to ECS
       run: |
-        aws ecs update-service --cluster order-api --service service-order-api --force-new-deployment
+        aws ecs update-service --cluster order-api --service service-order-api --force-new-deployment --region us-east-2
