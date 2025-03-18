@@ -36,10 +36,10 @@ jobs:
         aws ecs register-task-definition \
         --family task-order-api \
         --container-definitions '[{
-            "name": "order-api",
+            "name": "container-order-api",
             "image": "erikbarroso/order-api:latest",
-            "memory": 512,
-            "cpu": 256,
+            "memory": 350,
+            "cpu": 350,
             "essential": true,
             "portMappings": [{
             "containerPort": 3000,
