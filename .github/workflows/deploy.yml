@@ -32,30 +32,30 @@ jobs:
         docker push erikbarroso/order-api:latest
 
     - name: Update ECS Task Definition
-        run: |
-            aws ecs register-task-definition \
-            --family task-order-api \
-            --container-definitions '[{
-                "name": "order-api",
-                "image": "***/order-api:latest",
-                "memory": 512,
-                "cpu": 256,
-                "essential": true,
-                "portMappings": [{
-                "containerPort": 80,
-                "hostPort": 80
-                }]
-            }]' \
-            --region us-east-2
+      run: |
+        aws ecs register-task-definition \
+        --family task-order-api \
+        --container-definitions '[{
+            "name": "order-api",
+            "image": "***/order-api:latest",
+            "memory": 512,
+            "cpu": 256,
+            "essential": true,
+            "portMappings": [{
+            "containerPort": 80,
+            "hostPort": 80
+            }]
+        }]' \
+        --region us-east-2
 
     - name: Deploy to ECS
-        run: |
-            aws ecs update-service \
-            --cluster order-api \
-            --service service-order-api \
-            --task-definition task-order-api \
-            --force-new-deployment \
-            --region us-east-2
+      run: |
+        aws ecs update-service \
+        --cluster order-api \
+        --service service-order-api \
+        --task-definition task-order-api \
+        --force-new-deployment \
+        --region us-east-2
 
     - name: Deploy to ECS
       run: |
