@@ -37,13 +37,13 @@ jobs:
         --family task-order-api \
         --container-definitions '[{
             "name": "order-api",
-            "image": "***/order-api:latest",
+            "image": "erikbarroso/order-api:latest",
             "memory": 512,
             "cpu": 256,
             "essential": true,
             "portMappings": [{
-            "containerPort": 80,
-            "hostPort": 80
+            "containerPort": 3000,
+            "hostPort": 3000
             }]
         }]' \
         --region us-east-2
