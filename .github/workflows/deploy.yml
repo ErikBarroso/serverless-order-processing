@@ -28,7 +28,7 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t erikbarroso/order-api:latest .
+        docker build -t erikbarroso/order-api:latest -f Dockerfile.production .
         docker push erikbarroso/order-api:latest
 
     - name: Deploy to ECS
