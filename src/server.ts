@@ -12,7 +12,7 @@ const PORT = parseInt(process.env.PORT || '3000') ;
 app.use('/api', router);
 
 app.get('/', (req: Request, res: Response) => {
-  res.status(200).send('teste 2');
+  res.status(200).send('Order API is active!');
 });
 
 async function checkServerStartMode(): Promise<void> {
@@ -30,7 +30,7 @@ async function checkServerStartMode(): Promise<void> {
 
 function startAppServer(): void {
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`teste 2 ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
   });
 }
 
