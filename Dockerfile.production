@@ -7,13 +7,13 @@ ENV NODE_OPTIONS="--max-old-space-size=1024"
 
 # Copiar e instalar dependências
 COPY package*.json ./
-COPY tsconfig.production.json ./
+COPY tsconfig*.json ./
 
 RUN npm install --production
 
 COPY . .
 
-RUN npm run build
+RUN npm run build -- --project tsconfig.production.json
 
 
 EXPOSE 3000
