@@ -7,15 +7,13 @@ ENV NODE_OPTIONS="--max-old-space-size=1024"
 
 # Copiar e instalar dependências
 COPY package*.json ./
-COPY tsconfig.production.json ./tsconfig.json 
-
 RUN npm install --production
 
-COPY . .
+# Copiar apenas a pasta dist (compilada localmente)
+COPY dist ./dist
 
-RUN npm run build
-
-
+# Expor a porta da aplicação
 EXPOSE 3000
 
+# Rodar a aplicação
 CMD ["node", "dist/src/server.js"]
