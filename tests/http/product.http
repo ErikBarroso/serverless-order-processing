@@ -4,7 +4,7 @@ GET http://localhost:3000
 ###
 POST http://localhost:3000/api/products
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MjQyMDUxOCwiZXhwIjoxNzQyNDIxOTU4fQ.kWXNtMC6rCu1Xrkc3M-MrCk9Pn75UAWfBZq2OCPSzuM
 
 {
     "name": "celular",
@@ -22,7 +22,6 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmIt
 
 ###
 GET http://localhost:3000/api/products
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
 
 ###
 GET http://localhost:3000/api/products/name/CelUlar

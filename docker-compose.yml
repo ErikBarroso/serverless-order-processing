@@ -3,19 +3,25 @@ version: '3.7'
 services:
   api:
     build: .  # Aqui ele irá procurar pelo Dockerfile no diretório atual
-    mem_limit: 8g
+    env_file:
+      - .env
     ports:
       - "3000:3000"  # Expondo a porta 3000 do contêiner na porta 3000 da sua máquina local
     environment:  
       - DB_HOST=db  # Se a API usa alguma variável de ambiente para conectar ao DB
       - DYNAMODB_ENDPOINT=http://db:4566
       - EC2_ENDPOINT=http://db:4566
+    volumes:
+      - .:/src
     networks:
       - app_network
-    command: ["node", "--max-old-space-size=8192", "./src/server.ts"]
+    command: ["npm", "run", "dev",]
+
     
   db:
     image: localstack/localstack:latest  # Imagem do LocalStack, emulando o DynamoDB e ec2
+    env_file:
+      - .env
     ports:
       - "4566:4566"  # Expondo a porta do LocalStack
     environment:

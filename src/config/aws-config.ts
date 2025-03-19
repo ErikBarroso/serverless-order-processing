@@ -15,10 +15,10 @@ AWS.config.update({
 });
 
 export const docClient = new AWS.DynamoDB.DocumentClient({
-  endpoint: process.env.DYNAMODB_ENDPOINT || undefined,
+  endpoint: process.env.DYNAMODB_ENDPOINT,
 });
 
 export const ec2 = new AWS.EC2({
-  endpoint: process.env.EC2_ENDPOINT || undefined,
+  endpoint: process.env.EC2_ENDPOINT,
   region: process.env.AWS_REGION || 'us-east-1',
 });

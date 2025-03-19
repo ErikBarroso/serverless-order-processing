@@ -8,7 +8,7 @@
     "test:unit": "jest --testPathPattern tests/unit --noStackTrace --detectOpenHandles ",
     "test:integration": "jest --testPathPattern tests/integration --noStackTrace --detectOpenHandles ",
     "dev": "nodemon --ext ts --exec ts-node ./src/server.ts",
-    "build": "tsc -p tsconfig.production.json",
+    "build": "tsc",
     "start": "node dist/server.js"
   },
   "keywords": [],
@@ -23,11 +23,11 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "typescript": "^5.7.3",
     "zod": "^3.24.2"
-  },
-  "devDependencies": {
+},
+"devDependencies": {
     "nodemon": "^3.1.9",
+    "typescript": "^5.7.3",
     "ts-node": "^10.9.2",
     "@eslint/js": "^9.21.0",
     "@types/express": "^5.0.0",
