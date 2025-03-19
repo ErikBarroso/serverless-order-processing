@@ -7,7 +7,7 @@
     "test": "jest --runInBand --coverage",
     "test:unit": "jest --testPathPattern tests/unit --noStackTrace --detectOpenHandles ",
     "test:integration": "jest --testPathPattern tests/integration --noStackTrace --detectOpenHandles ",
-    "dev": "nodemon --ext ts --exec ts-node ./src/server.ts",
+    "dev": "nodemon --ext ts --exec ts-node -P tsconfig.dev.json ./src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js"
   },
