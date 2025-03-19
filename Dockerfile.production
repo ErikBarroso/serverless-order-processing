@@ -9,11 +9,10 @@ ENV NODE_OPTIONS="--max-old-space-size=1024"
 COPY package*.json ./
 RUN npm install --production
 
-# Copiar apenas a pasta dist (compilada localmente)
+RUN npm run build
+
 COPY dist ./dist
 
-# Expor a porta da aplicação
 EXPOSE 3000
 
-# Rodar a aplicação
 CMD ["node", "dist/src/server.js"]
