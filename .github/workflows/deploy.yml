@@ -29,6 +29,7 @@ jobs:
     - name: Build and push Docker image
       run: |
         docker build -t erikbarroso/order-api:latest -f Dockerfile.production .
+        docker images
         docker push erikbarroso/order-api:latest
 
     - name: Update ECS Task Definition
@@ -47,6 +48,7 @@ jobs:
             }]
         }]' \
         --region us-east-2
+        aws ecs describe-task-definition --task-definition task-order-api --region us-east-2
 
     - name: Deploy to ECS
       run: |
