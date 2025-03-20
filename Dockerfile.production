@@ -16,4 +16,4 @@ COPY dist ./dist
 EXPOSE 3000
 
 # Rodar a aplicação
-CMD ["node", "dist/server.js"]
+CMD ["node", "dist/src/server.js"]
