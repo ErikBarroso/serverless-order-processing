@@ -1,11 +1,8 @@
 import AWS from 'aws-sdk';
 import dotenv from 'dotenv';
 
-if (process.env.NODE_ENV === 'development') {
-  dotenv.config();
-} else {
-  dotenv.config({ path: '.env.production' });
-}
+const envPath = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
+dotenv.config({ path: envPath });
 
 AWS.config.update({
   region: process.env.AWS_REGION || 'us-east-1',
