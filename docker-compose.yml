@@ -10,6 +10,8 @@ services:
       - DYNAMODB_ENDPOINT=http://db:4566
       - EC2_ENDPOINT=http://db:4566
       - NODE_ENV=development
+      - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
+      - NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME}
     volumes:
       - .:/src
     networks:
