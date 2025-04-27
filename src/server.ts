@@ -1,8 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+require('newrelic');
 import express, { Response, Request } from 'express';
 import dotenv from 'dotenv';
 import router from './main/router/index';
 import { checkEc2InstanceStatus } from './data/services/ec2-services';
-import 'newrelic';
+
 
 dotenv.config();
 const app = express();
