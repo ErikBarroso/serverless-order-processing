@@ -1,110 +1,109 @@
 # Serverless Order Processing
 
-Sistema serverless para processamento de pedidos construído com Node.js, Express e TypeScript, utilizando arquitetura limpa e DynamoDB como banco de dados.
+Serverless order processing system built with Node.js, Express and TypeScript, using clean architecture and DynamoDB as the database.
 
-## 📋 Visão Geral
+## 📋 Overview
 
-Este projeto implementa um sistema de processamento de pedidos com arquitetura serverless, oferecendo APIs RESTful para gerenciamento de usuários, produtos e pedidos. O sistema utiliza AWS Lambda e DynamoDB para uma solução escalável e de baixo custo.
+This project implements a serverless order processing system, offering RESTful APIs for user, product, and order management. The system uses AWS Lambda and DynamoDB for a scalable and low-cost solution.
 
-## 🏗️ Arquitetura
+## 🏗️ Architecture
 
-O projeto segue os princípios da Arquitetura Limpa (Clean Architecture) com as seguintes camadas:
+The project follows the principles of Clean Architecture with the following layers:
 
-- **Domain**: Entidades e regras de negócio
-- **Use Cases**: Casos de uso da aplicação
-- **Infrastructure**: Implementações concretas (repositórios, ferramentas externas)
-- **Presentation**: Controllers e middlewares da API
-- **Main**: Configuração e inicialização da aplicação
+- **Domain**: Entities and business rules
+- **Use Cases**: Application use cases
+- **Infrastructure**: Concrete implementations (repositories, external tools)
+- **Presentation**: API controllers and middlewares
+- **Main**: Application configuration and initialization
 
-## 🔧 Tecnologias Utilizadas
+## 🔧 Technologies Used
 
-- **Node.js** e **TypeScript**
-- **Express**: Framework web
-- **AWS DynamoDB**: Banco de dados NoSQL
-- **Jest**: Framework de testes
-- **Docker**: Containerização
-- **LocalStack**: Emulação de serviços AWS localmente
-- **New Relic**: Monitoramento de desempenho
+- **Node.js** and **TypeScript**
+- **Express**: Web Framework
+- **AWS DynamoDB**: NoSQL Database
+- **Jest**: Testing Framework
+- **Docker**: Containerization
+- **LocalStack**: Emulation of AWS services locally
+- **New Relic**: Performance Monitoring
 
-## 🚀 Começando
+## 🚀 Getting Started
 
-### Pré-requisitos
+### Prerequisites
 
 - Node.js (v14+)
-- Docker e Docker Compose
-- AWS CLI (para deploy)
+- Docker and Docker Compose
 
-### Instalação e Execução Local
+### Installing and Running Locally
 
-1. Clone o repositório:
+1. Clone the repository:
    ```bash
    git clone https://github.com/seu-usuario/serverless-order-processing.git
    cd serverless-order-processing
    ```
 
-2. Instale as dependências:
+2. Install the dependencies:
    ```bash
    npm install
    ```
 
-3. Execute o ambiente local com Docker Compose:
+3.Run the local environment with Docker Compose:
    ```bash
    docker-compose up
    ```
 
-4. A API estará disponível em: `http://localhost:3000`
+4. The API will be available on: `http://localhost:3000`
 
-## 📊 Endpoints da API (Somente Ambiente Local)
+## 📊API Endpoints (Local Environment Only)
 
-### Autenticação
-- `POST /api/login`: Login de usuário
+### Authentication
+- `POST /api/login`: User Login
 
 
-### Usuários
-- `GET /api/users`: Lista todos os usuários
-- `GET /api/users/:id`: Busca usuário por ID
+### Users
+- `GET /api/users`: List all users
+- `GET /api/users/:id`: Search user by ID
 
-### Produtos
-- `GET /api/products`: Lista todos os produtos
-- `POST /api/products`: Cria novo produto
-- `GET /api/products/:id`: Busca produto por ID
-- `PUT /api/products/:id`: Atualiza produto
-- `DELETE /api/products/:id`: Remove produto
+### Products
+- `GET /api/products`: List all products
+- `POST /api/products`: Create new product
+- `GET /api/products/:id`: Search product by ID
+- `PUT /api/products/:id`: Update product
+- `DELETE /api/products/:id`: Remove product
 
-### Pedidos
-- `GET /api/orders`: Lista todos os pedidos
-- `POST /api/orders`: Cria novo pedido
-- `GET /api/orders/:id`: Busca pedido por ID
-- `DELETE /api/orders/:id`: Remove pedido
+### Orders
+- `GET /api/orders`: List all orders
+- `POST /api/orders`: Create new order
+- `GET /api/orders/:id`: Search order by ID
+- `DELETE /api/orders/:id`: Remove order
 
-## 🧪 Testes
+## 🧪 Tests
 
-O projeto inclui testes unitários e de integração:
+The project includes unit and integration tests:
 
 ```bash
-# Executar todos os testes
+# Run all tests
 npm test
 
-# Executar apenas testes unitários
+# Run only unit tests
 npm run test:unit
 
-# Executar apenas testes de integração
+# Run only integration tests
 npm run test:integration
 ```
 
-## 🛠️ Ambiente de Desenvolvimento
+## 🛠️ Development Environment
 
-O projeto usa Docker Compose para configurar um ambiente de desenvolvimento local que inclui:
-- API Node.js
-- LocalStack para emular serviços AWS (DynamoDB, EC2)
+The project uses Docker Compose to set up a local development environment that includes:
+- Node.js API
+- LocalStack to emulate AWS services (DynamoDB, EC2)
 
-### Desenvolvimento Futuro
+### Future Development
 
-Atualmente em planejamento:
-- Implementação em AWS Lambda
-- Configuração de CI/CD
-- Deploy em ambiente de produção
+Currently in planning:
+- Deployment on AWS Lambda
+- CI/CD setup
+- Deploy to production environment
 
-## 📘 Licença
+## 📘 License
 
-Este projeto está licenciado sob a licença ISC.
+This project is licensed under the ISC license.
