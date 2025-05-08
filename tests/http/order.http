@@ -1,3 +1,6 @@
+
+@url_lambd = https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
+
 ###
 GET http://localhost:3000
 
@@ -14,13 +17,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmIt
 }
 
 ###
-POST https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
+POST {{url_lambd}}
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0NjY1ODM3MywiZXhwIjoxNzQ2NjYxOTczfQ.G6nXjXMUPSHD6qCeYpDnKNIuwd2EuGDdhJcUXWtnBAo
 
 {
     "items": [
-            "b2dcc9ca-0e38-4605-afc5-340dde1f484e",
+            "b2dcc9ca-0e38-4605-afc5-340dde1f484e3",
             "b2dcc9ca-0e38-4605-afc5-340dde1f484e"
     ]
 }
