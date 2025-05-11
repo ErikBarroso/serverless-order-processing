@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const config = {
-  app_name: [process.env.NEW_RELIC_APP_NAME || 'serveless-order-processing'],
+  app_name: [process.env.NEW_RELIC_APP_NAME || 'api-order'],
   license_key: process.env.NEW_RELIC_LICENSE_KEY,
   logging: {
     level: 'info',
