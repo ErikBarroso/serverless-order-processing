@@ -1,3 +1,5 @@
+@urlAWS = http://18.223.180.26:3000
+
 ###
 GET http://localhost:3000
 
@@ -14,3 +16,20 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/api/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAyNWI5NjViLTExZDQtNGQyZS1iYWEzLTg0MzcxZjY5OTAxOCIsImlhdCI6MTc0MTYxMjI2MSwiZXhwIjoxNzQxNjE1ODYxfQ.mHGxKZ4aBK8mHxSz8WmXYtbznDwAVEcx44A7VX-g9fs
+
+###
+POST {{urlAWS}}/api/users
+Content-Type: application/json
+
+{
+    "name": "video",
+    "email": "erik@live.com",
+    "password": "11111111"
+}
+
+###
+GET {{urlAWS}}/api/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+
+###
+

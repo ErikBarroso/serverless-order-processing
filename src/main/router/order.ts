@@ -25,7 +25,6 @@ orderRouter.get('/:id',
 );
 
 orderRouter.get('/', 
-  adaptMiddleware(authorizator),
   adaptRoute(findOrders),
 );
 

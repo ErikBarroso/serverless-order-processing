@@ -1,5 +1,7 @@
 
 @url_lambd = https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
+@urlAWS = http://18.223.180.26:3000
+
 
 ###
 GET http://localhost:3000
@@ -23,7 +25,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxL
 
 {
     "items": [
-            "b2dcc9ca-0e38-4605-afc5-340dde1f484e3",
+            "b2dcc9ca-0e38-4605-afc5-340dde1f484e",
             "b2dcc9ca-0e38-4605-afc5-340dde1f484e"
     ]
 }
@@ -39,3 +41,27 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmIt
 ###
 GET http://localhost:3000/api/orders
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTcyNDExMywiZXhwIjoxNzQxNzI3NzEzfQ.Q6CRCUNGqEnkYbJHlHsaZjPAgigl0XCxQBEpB5RKxM4
+
+###
+POST {{urlAWS}}/api/orders
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+
+{
+    "items": [
+            "b2dcc9ca-0e38-4605-afc5-340dde1f484e",
+            "b2dcc9ca-0e38-4605-afc5-340dde1f484e"
+    ]
+}
+
+###
+GET {{urlAWS}}/api/orders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+
+###
+DELETE {{urlAWS}}/api/orders/d6bd20ed-5fc9-42bb-b486-c152d01e44e4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+
+###
+GET {{urlAWS}}/api/orders/1d342119-3a78-4128-8b66-0b81c26de226
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA

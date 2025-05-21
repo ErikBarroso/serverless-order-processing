@@ -1,3 +1,5 @@
+
+@urlAWS = http://18.223.180.26:3000
 ###
 GET http://localhost:3000
 
@@ -26,3 +28,34 @@ GET http://localhost:3000/api/products
 ###
 GET http://localhost:3000/api/products/name/CelUlar
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
+
+###
+POST {{urlAWS}}/api/products
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+
+{
+    "name": "teclado",
+    "price": 303,
+    "stock": 50
+}
+
+###
+GET {{urlAWS}}/api/products
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+
+###
+DELETE {{urlAWS}}/api/products/79c344fe-40de-4863-a794-c5745db2d1b2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+
+###
+GET {{urlAWS}}/api/products/id/b87e3e2e-2f6c-473a-b5ce-0ceba9e7eff0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+
+###
+GET {{urlAWS}}/api/products/name/teclado
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+
+###
+
+
