@@ -1,4 +1,4 @@
-import { DynamoDB } from 'aws-sdk';
+import { DynamoDB, SQS } from 'aws-sdk';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
 const docClient = new DynamoDB.DocumentClient();
@@ -47,6 +47,16 @@ const saveOrderToDynamoDB = async (order: any): Promise<void> => {
 };
 
 const sendMessageToQueue = async (order: unknown): Promise<void> => {
+  const queueUrl = process.env.QUEUE_URL;
+  if (!queueUrl) {
+    throw new Error('URL da fila não configurada');
+  }
+
+  const sqs = new SQS({ region: 'us-east-2' });    
+  await sqs.sendMessage({
+    QueueUrl: queueUrl,
+    MessageBody: JSON.stringify(order),
+  }).promise();
   console.log('Mensagem enviada para a fila:', order);
 };
 
