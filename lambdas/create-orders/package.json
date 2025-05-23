@@ -1,7 +1,8 @@
 {
-  "name": "lambda-create-order",
+  "name": "create-orders-lambda",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "description": "Lambda function for creating orders",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -12,15 +13,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "aws-sdk": "^2.1692.0",
-    "jsonwebtoken": "^9.0.2",
-    "uuid": "^11.1.0"
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.7.3"
   }
 }

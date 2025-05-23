@@ -9,7 +9,8 @@
     "test:integration": "jest --testPathPattern tests/integration --noStackTrace --detectOpenHandles ",
     "dev": "nodemon --ext ts --exec ts-node ./src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "deploy:lambda": "./deploy-lambda.sh"
   },
   "keywords": [],
   "author": "",
