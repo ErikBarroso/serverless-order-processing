@@ -5,7 +5,8 @@ export type Order = {
     customerId: string;
     orderStatus: OrderStatus;
     items: Product['id'][];
-    createdAt: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export enum OrderStatus {
