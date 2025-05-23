@@ -1,4 +1,3 @@
- 
 import { docClient } from '../../../config/aws-config';
 import { Order } from '../../../domain/entities/order';
 import { OrderRepository } from '../../../domain/repositories/order';
@@ -35,5 +34,36 @@ export class DynamoOrderRepository implements OrderRepository {
     };
     const result = await docClient.query(params).promise();
     return result.Items as Order[];
+  }
+
+  async update(id: string, customerId: string, updateData: Partial<Order>): Promise<Order> {
+    const updateExpressions: string[] = [];
+    const expressionAttributeNames: { [key: string]: string } = {};
+    const expressionAttributeValues: { [key: string]: any } = {};
+
+
+    Object.keys(updateData).forEach((key, index) => {
+      const attributeName = `#attr${index}`;
+      const attributeValue = `:val${index}`;
+      
+      updateExpressions.push(`${attributeName} = ${attributeValue}`);
+      expressionAttributeNames[attributeName] = key;
+      expressionAttributeValues[attributeValue] = updateData[key as keyof Order];
+    });
+
+    const params = {
+      TableName: this.TABLE_NAME,
+      Key: { 
+        id: id, 
+        customerId: customerId, 
+      },
+      UpdateExpression: `SET ${updateExpressions.join(', ')}`,
+      ExpressionAttributeNames: expressionAttributeNames,
+      ExpressionAttributeValues: expressionAttributeValues,
+      ReturnValues: 'ALL_NEW',
+    };
+
+    const result = await docClient.update(params).promise();
+    return result.Attributes as Order;
   }
 }
