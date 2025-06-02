@@ -8,28 +8,21 @@ export class UpdateOrderUseCaseImpl implements UpdateOrderUseCase {
     private readonly ordersRepo: OrderRepository,
   ) {}
 
-  async exec(orders: Order[]): Promise<Order[]> {
+  async exec(order: Order): Promise<Order[]> {
     const updatedOrders: Order[] = [];
     
-    try {
-      for (const order of orders) {
-        const updateData: Partial<Order> = {
-          orderStatus: OrderStatus.COMPLETED,
-          updatedAt: new Date().toISOString(),
-        };
+    const updateData: Partial<Order> = {
+      orderStatus: OrderStatus.COMPLETED,
+      updatedAt: new Date().toISOString(),
+    };
         
-        const updatedOrder = await this.ordersRepo.update(
-          order.id, 
-          order.customerId, 
-          updateData,
-        );
-        updatedOrders.push(updatedOrder);
-      }
-
-      return ok('Pedidos atualizados com sucesso!', updatedOrders);
-    } catch (error) {
-      console.error('Erro ao atualizar orders:', error);
-      throw error;
-    }
+    const updatedOrder = await this.ordersRepo.update(
+      order.id, 
+      order.customerId, 
+      updateData,
+    );
+    updatedOrders.push(updatedOrder);
+        
+    return ok('Pedido atualizado com sucesso!', updatedOrder);
   }
 }
