@@ -8,9 +8,9 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "video",
-    "email": "erik@live.com",
-    "password": "11111111"
+    "name": "Teste",
+    "email": "teste@localstack.com",
+    "password": "12345678"
 }
 
 ###

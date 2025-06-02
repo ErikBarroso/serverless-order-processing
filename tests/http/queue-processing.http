@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @lambdaUrl = https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0ODkwMDA1NywiZXhwIjoxNzQ4OTAzNjU3fQ.jjcS4_KNZpdval9NvzVs6WZhU62FEslTVJ6yenH3NBA
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0ODkwNTMzNSwiZXhwIjoxNzQ4OTA4OTM1fQ.5G1xEP64MCWTUB9THSIYNuocuqAFOC7f3_t6YDlDlHU
 
 ### 1. Criar order via Lambda (envia para SQS)
 POST {{lambdaUrl}}

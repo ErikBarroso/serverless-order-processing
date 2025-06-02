@@ -2,7 +2,7 @@
 @url_lambd = https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
 @urlAWS = http://18.223.180.26:3000
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0ODkwMDA1NywiZXhwIjoxNzQ4OTAzNjU3fQ.jjcS4_KNZpdval9NvzVs6WZhU62FEslTVJ6yenH3NBA
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0ODkwNTMzNSwiZXhwIjoxNzQ4OTA4OTM1fQ.5G1xEP64MCWTUB9THSIYNuocuqAFOC7f3_t6YDlDlHU
 
 ###
 GET http://localhost:3000
