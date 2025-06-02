@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @lambdaUrl = https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTcyNDExMywiZXhwIjoxNzQxNzI3NzEzfQ.Q6CRCUNGqEnkYbJHlHsaZjPAgigl0XCxQBEpB5RKxM4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0ODkwMDA1NywiZXhwIjoxNzQ4OTAzNjU3fQ.jjcS4_KNZpdval9NvzVs6WZhU62FEslTVJ6yenH3NBA
 
 ### 1. Criar order via Lambda (envia para SQS)
 POST {{lambdaUrl}}
@@ -14,6 +14,7 @@ Authorization: {{token}}
     ]
 }
 
+###
 GET {{baseUrl}}/api/orders
 Authorization: {{token}}
 
@@ -22,12 +23,13 @@ POST {{baseUrl}}/api/orders/process-queue
 Content-Type: application/json
 Authorization: {{token}}
 
+###
 GET {{baseUrl}}/api/orders/worker/status
 Authorization: {{token}}
-
+###
 POST {{baseUrl}}/api/orders/worker/stop
 Authorization: {{token}}
-
+###
 POST {{baseUrl}}/api/orders/worker/start
 Authorization: {{token}}
 

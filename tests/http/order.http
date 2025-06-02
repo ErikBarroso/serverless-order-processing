@@ -2,6 +2,7 @@
 @url_lambd = https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
 @urlAWS = http://18.223.180.26:3000
 
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0ODkwMDA1NywiZXhwIjoxNzQ4OTAzNjU3fQ.jjcS4_KNZpdval9NvzVs6WZhU62FEslTVJ6yenH3NBA
 
 ###
 GET http://localhost:3000
@@ -9,19 +10,19 @@ GET http://localhost:3000
 ###
 POST http://localhost:3000/api/orders
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTcyNDExMywiZXhwIjoxNzQxNzI3NzEzfQ.Q6CRCUNGqEnkYbJHlHsaZjPAgigl0XCxQBEpB5RKxM4
+Authorization: {{token}}
 
 {
     "items": [
-            "b2dcc9ca-0e38-4605-afc5-340dde1f484e",
-            "b2dcc9ca-0e38-4605-afc5-340dde1f484e"
+            "f09c7319-1240-4d8f-b6ea-b7af16870665",
+            "f09c7319-1240-4d8f-b6ea-b7af16870665"
     ]
 }
 
 ###
 POST {{url_lambd}}
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0NjY1ODM3MywiZXhwIjoxNzQ2NjYxOTczfQ.G6nXjXMUPSHD6qCeYpDnKNIuwd2EuGDdhJcUXWtnBAo
+Authorization: {{token}}
 
 {
     "items": [
@@ -32,20 +33,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxL
 
 ###
 DELETE http://localhost:3000/api/orders/d6bd20ed-5fc9-42bb-b486-c152d01e44e4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0NjM5MDU3NiwiZXhwIjoxNzQ2Mzk0MTc2fQ.W8FWWt-Jmkcp6m6rqkAiccjTjrdeBeTQvs
+Authorization: {{token}}
 ###
 
 GET http://localhost:3000/api/orders/a8a2ec06-b864-4127-a7a3-0f45f02022b5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0NjM5MDYzMSwiZXhwIjoxNzQ2Mzk0MjMxfQ.78g4q3d1srIKhMpNN_8pH8BlnMwlGJGuwPv0kZRL07s
+Authorization: {{token}}
 
 ###
 GET http://localhost:3000/api/orders
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTcyNDExMywiZXhwIjoxNzQxNzI3NzEzfQ.Q6CRCUNGqEnkYbJHlHsaZjPAgigl0XCxQBEpB5RKxM4
+Authorization: {{token}}
 
 ###
 POST {{urlAWS}}/api/orders
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+Authorization: {{token}}
 
 {
     "items": [
@@ -56,12 +57,12 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgt
 
 ###
 GET {{urlAWS}}/api/orders
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+Authorization: {{token}}
 
 ###
 DELETE {{urlAWS}}/api/orders/d6bd20ed-5fc9-42bb-b486-c152d01e44e4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+Authorization: {{token}}
 
 ###
 GET {{urlAWS}}/api/orders/1d342119-3a78-4128-8b66-0b81c26de226
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+Authorization: {{token}}
