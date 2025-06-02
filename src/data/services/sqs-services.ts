@@ -3,6 +3,7 @@ import { Messaging } from '../../domain/protocols/messaging';
 import { UpdateOrderUseCase } from '../../domain/use-cases/order/update-order';
 import { Order } from '../../domain/entities/order';
 import { ok } from '../utils/result';
+import { sqs } from '../../config/aws-config';
 
 export class SQSConsumerService implements Messaging {
   private sqs: SQS;
@@ -11,7 +12,8 @@ export class SQSConsumerService implements Messaging {
     public readonly queueUrl: string,
     private readonly updateOrderUseCase: UpdateOrderUseCase,
   ) {
-    this.sqs = new SQS({ region: 'us-east-2' });
+    
+    this.sqs = sqs;
   }
 
   async receiveMessages(): Promise<SQS.Message[]> {
