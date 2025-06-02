@@ -1,0 +1,39 @@
+@baseUrl = http://localhost:3000
+@lambdaUrl = https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTcyNDExMywiZXhwIjoxNzQxNzI3NzEzfQ.Q6CRCUNGqEnkYbJHlHsaZjPAgigl0XCxQBEpB5RKxM4
+
+### 1. Criar order via Lambda (envia para SQS)
+POST {{lambdaUrl}}
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "items": [
+        "b2dcc9ca-0e38-4605-afc5-340dde1f484e",
+        "b2dcc9ca-0e38-4605-afc5-340dde1f484e"
+    ]
+}
+
+GET {{baseUrl}}/api/orders
+Authorization: {{token}}
+
+### Processar fila manualmente
+POST {{baseUrl}}/api/orders/process-queue
+Content-Type: application/json
+Authorization: {{token}}
+
+GET {{baseUrl}}/api/orders/worker/status
+Authorization: {{token}}
+
+POST {{baseUrl}}/api/orders/worker/stop
+Authorization: {{token}}
+
+POST {{baseUrl}}/api/orders/worker/start
+Authorization: {{token}}
+
+### Fluxo de Teste Completo:
+# 1. Pare a API (Ctrl+C)
+# 2. Criar order via Lambda
+# 3. Inicie a API novamente
+# 4. Processar fila manualmente ou aguarde o worker automático
+# 5. Verificar se os orders foram processados 
