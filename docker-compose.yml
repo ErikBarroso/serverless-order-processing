@@ -6,17 +6,24 @@ services:
     ports:
       - "3000:3000" 
     environment:  
-      - DB_HOST=db
-      - DYNAMODB_ENDPOINT=http://db:4566
-      - EC2_ENDPOINT=http://db:4566
-      - NODE_ENV=development
+      - DB_HOST=${DB_HOST:-db}
+      - DYNAMODB_ENDPOINT=${DYNAMODB_ENDPOINT:-http://db:4566}
+      - SQS_ENDPOINT=${SQS_ENDPOINT:-http://db:4566}
+      - QUEUE_URL=${QUEUE_URL:-http://db:4566/000000000000/order-processing-queue}
+      - NODE_ENV=${NODE_ENV:-development}
       - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
       - NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-test}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-test}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+      - JWT_SECRET=${JWT_SECRET:-your_jwt_secret_here}
     volumes:
       - .:/src
     networks:
       - app_network
-    command: ["npm", "run", "dev",]
+    command: ["npm", "run", "dev"]
+    depends_on:
+      - db
     
   db:
     image: localstack/localstack:latest
@@ -26,10 +33,11 @@ services:
       - DOCKER_HOST=unix:///var/run/docker.sock
       - DATA_DIR=/var/lib/localstack
       - PERSISTENCE=1
-      - SERVICES=dynamodb,ec2
+      - SERVICES=dynamodb,ec2,sqs
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"  # Para usar o Docker dentro do contêiner
       - "./localstack_data:/var/lib/localstack"   # Persistindo os dados localmente
+      - "./localstack-init:/etc/localstack/init/ready.d"  # Scripts de inicialização
     networks:
       - app_network
 
