@@ -4,6 +4,7 @@ import express, { Response, Request } from 'express';
 import dotenv from 'dotenv';
 import router from './main/router/index';
 import { checkEc2InstanceStatus } from './data/services/ec2-services';
+import { QueueProcessorWorker } from './infrastructure/workers/queue-processor';
 
 
 dotenv.config();
@@ -34,7 +35,40 @@ async function checkServerStartMode(): Promise<void> {
 function startAppServer(): void {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
+    
+    initializeQueueProcessingWorker();
   });
+}
+
+function initializeQueueProcessingWorker(): void {
+  try {
+    const workerQueueSqs = new QueueProcessorWorker();
+    workerQueueSqs.start(30); // Processar a cada 30 segundos
+    
+    configureElegantServerTermination(workerQueueSqs);
+    
+  } catch (error) {
+    console.error('Erro ao inicializar worker da fila:', error);
+  }
+}
+
+function configureElegantServerTermination(workerQueueSqs: QueueProcessorWorker): void {
+  // Listener para sinal de terminação do sistema (kill, systemd, docker stop, etc)
+  process.on('SIGTERM', () => {
+    stopServerGracefully('SIGTERM', workerQueueSqs);
+  });
+  
+  // Listener para interrupção manual (Ctrl+C no terminal)
+  process.on('SIGINT', () => {
+    stopServerGracefully('SIGINT', workerQueueSqs);
+  });
+}
+
+function stopServerGracefully(signal: string, workerFromQueueSqs: QueueProcessorWorker): void {
+  console.log(`Recebido sinal ${signal}, iniciando encerramento elegante do servidor...`);
+  workerFromQueueSqs.stop();
+  console.log('Servidor encerrado com sucesso!');
+  process.exit(0);
 }
 
 checkServerStartMode();
