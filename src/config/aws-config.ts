@@ -19,3 +19,8 @@ export const ec2 = new AWS.EC2({
   endpoint: process.env.EC2_ENDPOINT,
   region: process.env.AWS_REGION || 'us-east-1',
 });
+
+export const sqs = new AWS.SQS({
+  endpoint: process.env.SQS_ENDPOINT,
+  region: process.env.AWS_REGION || 'us-east-2',
+});
