@@ -13,6 +13,7 @@ AWS.config.update({
 
 export const docClient = new AWS.DynamoDB.DocumentClient({
   endpoint: process.env.DYNAMODB_ENDPOINT,
+  region: process.env.AWS_REGION || 'us-east-1',
 });
 
 export const ec2 = new AWS.EC2({
@@ -22,5 +23,5 @@ export const ec2 = new AWS.EC2({
 
 export const sqs = new AWS.SQS({
   endpoint: process.env.SQS_ENDPOINT,
-  region: process.env.AWS_REGION || 'us-east-2',
+  region: process.env.AWS_REGION || 'us-east-1',
 });
