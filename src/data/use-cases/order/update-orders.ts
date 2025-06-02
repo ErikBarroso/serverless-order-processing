@@ -1,7 +1,7 @@
 import { Order, OrderStatus } from '../../../domain/entities/order';
 import { OrderRepository } from '../../../domain/repositories/order';
 import { UpdateOrderUseCase } from '../../../domain/use-cases/order/update-order';
-import { ok } from '../../utils/result';
+import { notFound, ok } from '../../utils/result';
 
 export class UpdateOrderUseCaseImpl implements UpdateOrderUseCase {
   constructor(
@@ -9,6 +9,11 @@ export class UpdateOrderUseCaseImpl implements UpdateOrderUseCase {
   ) {}
 
   async exec(order: Order): Promise<Order[]> {
+    const orderExists = await this.ordersRepo.findById(order.id, order.customerId);
+    if (!orderExists) {
+      return notFound('Pedido não encontrado');
+    }
+    
     const updatedOrders: Order[] = [];
     
     const updateData: Partial<Order> = {
