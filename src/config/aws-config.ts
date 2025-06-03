@@ -5,7 +5,7 @@ const envPath = process.env.NODE_ENV === 'production' ? '.env.production' : '.en
 dotenv.config({ path: envPath });
 
 AWS.config.update({
-  region: process.env.AWS_REGION || 'us-east-1',
+  region: process.env.AWS_REGION,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   logger: process.env.NODE_ENV === 'development' ? console : undefined, 
@@ -13,15 +13,15 @@ AWS.config.update({
 
 export const docClient = new AWS.DynamoDB.DocumentClient({
   endpoint: process.env.DYNAMODB_ENDPOINT,
-  region: process.env.AWS_REGION || 'us-east-1',
+  region: process.env.AWS_REGION,
 });
 
 export const ec2 = new AWS.EC2({
   endpoint: process.env.EC2_ENDPOINT,
-  region: process.env.AWS_REGION || 'us-east-1',
+  region: process.env.AWS_REGION,
 });
 
 export const sqs = new AWS.SQS({
   endpoint: process.env.SQS_ENDPOINT,
-  region: process.env.AWS_REGION || 'us-east-1',
+  region: process.env.AWS_REGION,
 });
