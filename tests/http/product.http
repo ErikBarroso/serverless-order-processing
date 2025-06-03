@@ -1,12 +1,14 @@
 
 @urlAWS = http://18.223.180.26:3000
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1MGM5MmFkLWFkZjQtNGE0My04OTRmLTE1YTY0ZGY2NWY4OCIsImlhdCI6MTc0ODk0NDI3MywiZXhwIjoxNzQ4OTQ3ODczfQ.oVU96KK09f1Fhgh4VHR-_Mk0p7vYOcTI52E7ADDQaI4
 ###
 GET http://localhost:3000
 
 ###
 POST http://localhost:3000/api/products
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MjQyMDUxOCwiZXhwIjoxNzQyNDIxOTU4fQ.kWXNtMC6rCu1Xrkc3M-MrCk9Pn75UAWfBZq2OCPSzuM
+Authorization: {{token}}
 
 {
     "name": "celular",
@@ -16,23 +18,23 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmIt
 
 ###
 DELETE http://localhost:3000/api/products/79c344fe-40de-4863-a794-c5745db2d1b2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
+Authorization: {{token}}
 ###
 
 GET http://localhost:3000/api/products/id/f09c7319-1240-4d8f-b6ea-b7af16870665
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
+Authorization: {{token}}
 
 ###
 GET http://localhost:3000/api/products
 
 ###
-GET http://localhost:3000/api/products/name/CelUlar
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0MTYyNTg2NywiZXhwIjoxNzQxNjI5NDY3fQ.DuHHuvpOwe8ZMaAcQgAZ99x6SNJ9jOYjc338YP4wbIk
+GET http://localhost:3000/api/products/name/Mouse%20Gamer
+Authorization: {{token}}
 
 ###
 POST {{urlAWS}}/api/products
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+Authorization: {{token}}
 
 {
     "name": "teclado",
@@ -42,19 +44,19 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgt
 
 ###
 GET {{urlAWS}}/api/products
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+Authorization: {{token}}
 
 ###
 DELETE {{urlAWS}}/api/products/79c344fe-40de-4863-a794-c5745db2d1b2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+Authorization: {{token}}
 
 ###
 GET {{urlAWS}}/api/products/id/b87e3e2e-2f6c-473a-b5ce-0ceba9e7eff0
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+Authorization: {{token}}
 
 ###
 GET {{urlAWS}}/api/products/name/teclado
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0Nzg2MDM3OSwiZXhwIjoxNzQ3ODYzOTc5fQ.Poee6gC3dBGQK3fBsV02zT2s3NETvm48WXz0BmratHA
+Authorization: {{token}}
 
 ###
 
