@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --runInBand --coverage",
     "test:unit": "jest --testPathPattern tests/unit --noStackTrace --detectOpenHandles ",
-    "test:integration": "jest --testPathPattern tests/integration --noStackTrace --detectOpenHandles ",
+    "test:integration": "DYNAMODB_ENDPOINT=http://localhost:4566 SQS_ENDPOINT=http://localhost:4566 QUEUE_URL=http://localhost:4566/000000000000/order-processing-queue jest --testPathPattern tests/integration --noStackTrace --detectOpenHandles ",
     "dev": "nodemon --ext ts --exec ts-node ./src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
