@@ -1,6 +1,6 @@
 # 📁 Scripts de Gerenciamento
 
-Esta pasta contém scripts organizados para gerenciar o ambiente LocalStack de desenvolvimento.
+Esta pasta contém scripts organizados para gerenciar o ambiente LocalStack de desenvolvimento e deploy para produção.
 
 ## 📂 Estrutura dos Scripts
 
@@ -14,12 +14,18 @@ scripts/
 │   ├── test-auth.sh           # Testes de autenticação
 │   ├── test-sqs.sh            # Testes de processamento SQS
 │   └── test-api.sh            # Testes dos endpoints da API
+├── deploy/                    # 🆕 Scripts de deploy para produção
+│   ├── deploy-all.sh          # Deploy completo orquestrado
+│   ├── deploy-infrastructure.sh # Deploy da infraestrutura AWS
+│   ├── deploy.sh              # Deploy da API (ECS)
+│   ├── deploy-lambda.sh       # Deploy das Lambda functions
+│   └── rollback.sh            # Script de rollback
 ├── utils/
 │   └── check-resources.sh     # Verificação de status dos recursos
 └── README.md                  # Esta documentação
 ```
 
-## Uso Principal
+## 🚀 Uso Principal
 
 ### Script Orquestrador (`localstack.sh`)
 
@@ -74,9 +80,83 @@ make test-sqs
 make test-api
 ```
 
+## 🚀 Deploy para Produção
+
+### Comandos de Deploy
+
+```bash
+# Deploy completo para staging
+make deploy-staging
+
+# Deploy completo para produção
+make deploy-prod
+
+# Deploy específico de componentes
+make deploy-infrastructure ENV=staging
+make deploy-api ENV=production
+make deploy-lambda ENV=staging
+
+# Rollback em caso de problemas
+make rollback ENV=staging COMPONENT=api
+make rollback ENV=production COMPONENT=all VERSION=v1.2.3
+```
+
+### Scripts de Deploy Individuais
+
+#### 🏗️ `deploy/deploy-infrastructure.sh`
+- Cria tabelas DynamoDB com prefixo de ambiente
+- Cria filas SQS com DLQ
+- Cria políticas IAM para Lambdas
+- Suporte para múltiplos ambientes (staging/production)
+
+#### 🚀 `deploy/deploy.sh`
+- Deploy da API no ECS
+- Build e push de imagem Docker
+- Update de task definition
+- Rolling deployment
+
+#### ⚡ `deploy/deploy-lambda.sh`
+- Deploy das Lambda functions
+- Compilação TypeScript otimizada
+- Criação de pacotes zip mínimos
+- Update de código das functions
+
+#### 🎯 `deploy/deploy-all.sh` (Orquestrador)
+- Deploy completo coordenado
+- Build + Testes + Deploy
+- Suporte a diferentes ambientes
+- Health checks integrados
+
+```bash
+# Exemplos de uso
+./scripts/deploy/deploy-all.sh staging
+./scripts/deploy/deploy-all.sh production
+
+# Deploy apenas de alguns componentes
+DEPLOY_INFRASTRUCTURE=false ./scripts/deploy/deploy-all.sh staging
+DEPLOY_API=false DEPLOY_LAMBDAS=true ./scripts/deploy/deploy-all.sh staging
+```
+
+#### 🔄 `deploy/rollback.sh`
+- Rollback rápido em caso de problemas
+- Suporte a versões específicas
+- Health checks após rollback
+- Notificações (Slack/Teams)
+
+```bash
+# Rollback completo para versão anterior
+./scripts/deploy/rollback.sh production all
+
+# Rollback apenas da API
+./scripts/deploy/rollback.sh staging api
+
+# Rollback para versão específica
+./scripts/deploy/rollback.sh production lambda v1.2.3
+```
+
 ## 📋 Scripts Individuais
 
-### Setup Scripts
+### 🏗️ Setup Scripts
 
 #### `setup/init-tables.sh`
 - Cria tabelas DynamoDB (Users, Product, Orders)
@@ -90,7 +170,7 @@ make test-api
 - Verifica duplicatas antes de inserir
 - Hash bcrypt correto para a senha
 
-### Test Scripts
+### 🧪 Test Scripts
 
 #### `test/test-auth.sh`
 - Testa login com usuário de teste
@@ -110,7 +190,7 @@ make test-api
 - Testa criação de novos pedidos
 - Testa casos de erro (401, 404)
 
-### Utility Scripts
+### 🔧 Utility Scripts
 
 #### `utils/check-resources.sh`
 - Verifica saúde do LocalStack
@@ -119,7 +199,7 @@ make test-api
 - Conta itens nas tabelas
 - Resumo geral do ambiente
 
-## Configuração de Permissões
+## 🔒 Configuração de Permissões
 
 Os scripts são automaticamente configurados com permissões de execução quando você usa o Makefile:
 
@@ -134,9 +214,10 @@ chmod +x scripts/localstack.sh
 chmod +x scripts/setup/*.sh
 chmod +x scripts/test/*.sh
 chmod +x scripts/utils/*.sh
+chmod +x scripts/deploy/*.sh  # 🆕
 ```
 
-## Fluxo de Desenvolvimento
+## 🎯 Fluxo de Desenvolvimento
 
 ### Primeiro uso:
 ```bash
@@ -147,6 +228,21 @@ make init          # Setup inicial completo
 ```bash
 make dev           # Subir ambiente
 make test          # Verificar se tudo funciona
+```
+
+### Deploy para staging:
+```bash
+make deploy-staging  # Deploy automático
+```
+
+### Deploy para produção:
+```bash
+make deploy-prod     # Deploy com verificações extras
+```
+
+### Em caso de problemas:
+```bash
+make rollback ENV=production COMPONENT=all
 ```
 
 ### Debugging:
@@ -177,34 +273,64 @@ make reset         # Reset completo
 
 ### Dados de teste ausentes:
 ```bash
-./scripts/setup/seed-data.sh          # Reinserir dados
+./scripts/setup/seed-data.sh          # Recriar dados
 ```
 
-### Testes falhando:
+### Deploy falhou:
 ```bash
-make test-auth     # Testar autenticação primeiro
-make status        # Verificar infraestrutura
+# Verificar logs de deploy
+./scripts/deploy/deploy-all.sh staging
+
+# Fazer rollback se necessário
+make rollback ENV=staging COMPONENT=all
 ```
 
-## 📊 Dados de Teste
+### Lambda não funciona:
+```bash
+# Redeploy apenas da Lambda
+make deploy-lambda ENV=staging
 
-### Usuário:
-- **Email:** `teste@localstack.com`
-- **Senha:** `12345678`
-- **ID:** `11f23291-fbbb-4e5c-8548-08a793295c20`
+# Verificar logs da Lambda
+aws logs tail /aws/lambda/create-order-staging --follow
+```
 
-### Produtos:
-- Notebook Dell (`f09c7319-1240-4d8f-b6ea-b7af16870665`)
-- Mouse Gamer (`a1b2c3d4-5678-9abc-def0-123456789abc`)
-- Teclado Mecânico (`b2c3d4e5-6789-abcd-ef01-23456789abcd`)
-- Monitor 24" (`c3d4e5f6-789a-bcde-f012-3456789abcde`)
+## 🌟 Boas Práticas
 
-## Vantagens desta Organização
+### Ambientes
+- **Local**: Use `make dev` para desenvolvimento
+- **Staging**: Use `make deploy-staging` para testes
+- **Production**: Use `make deploy-prod` com cuidado
 
-1. **Separação de responsabilidades** - cada script tem função específica
-2. **Reutilização** - scripts podem ser chamados individualmente
-3. **Manutenção** - fácil localizar e editar funcionalidades
-4. **Testabilidade** - testes isolados e focados
-5. **Documentação** - cada script é autoexplicativo
-6. **Flexibilidade** - use via Makefile ou diretamente
-7. **Padrão profissional** - estrutura escalável e organizada 
+### Segurança
+- Sempre teste em staging primeiro
+- Use rollback em caso de problemas
+- Configure notificações para deploys em produção
+
+### Monitoramento
+- Use `make status` para verificar saúde
+- Configure alertas para falhas de deploy
+- Monitore logs após deployments
+
+### Versionamento
+- Use tags git para releases
+- Documente mudanças importantes
+- Mantenha histórico de deploys
+
+## 🔗 Integração com CI/CD
+
+Os scripts são compatíveis com pipelines de CI/CD:
+
+```yaml
+# GitHub Actions example
+- name: Deploy to staging
+  run: make deploy-staging
+
+- name: Run tests
+  run: make test
+
+- name: Deploy to production
+  run: make deploy-prod
+  if: github.ref == 'refs/heads/main'
+```
+
+Esta estrutura segue as **melhores práticas da indústria** e é amplamente utilizada em empresas de tecnologia! 🚀 
