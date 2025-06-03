@@ -19,4 +19,8 @@ export class DynamoOrderRepositoryStub implements OrderRepository {
   findById(id: string, userId: string): Promise<Order | null> {
     return Promise.resolve(mockedOrder);
   }
+
+  update(id: string, customerId: string, updateData: Partial<Order>): Promise<Order> {
+    return Promise.resolve(mockedOrder);
+  }
 }
