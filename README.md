@@ -1,109 +1,341 @@
-# Serverless Order Processing
+# 🛍️ Serverless Order Processing System
 
-Serverless order processing system built with Node.js, Express and TypeScript, using clean architecture and DynamoDB as the database.
+Serverless order processing system built with **Node.js**, **TypeScript**, and **AWS services**. Designed for high scalability, reliability, and maintainability using Clean Architecture principles.
 
-## 📋 Overview
+## 📋 Table of Contents
 
-This project implements a serverless order processing system, offering RESTful APIs for user, product, and order management. The system uses AWS Lambda and DynamoDB for a scalable and low-cost solution.
+- [🎯 Overview](#-overview)
+- [🏗️ Architecture](#-architecture)
+- [⚡ Features](#-features)
+- [🔧 Technology Stack](#-technology-stack)
+- [🚀 Quick Start](#-quick-start)
+- [📚 API Documentation](#-api-documentation)
+- [🧪 Testing](#-testing)
+- [🚢 Deployment](#-deployment)
+- [📊 Monitoring](#-monitoring)
+
+## 🎯 Overview
+
+This system provides a comprehensive solution for order processing in serverless environments, featuring:
+
+- **RESTful APIs** for user, product, and order management
+- **Real-time order processing** with SQS message queues
+- **Scalable architecture** supporting high throughput
+- **Cloud-native design** with AWS Lambda and DynamoDB
+- **Clean Architecture** principles for maintainability
+- **Comprehensive testing** with unit and integration tests
 
 ## 🏗️ Architecture
 
-The project follows the principles of Clean Architecture with the following layers:
-
-- **Domain**: Entities and business rules
-- **Use Cases**: Application use cases
-- **Infrastructure**: Concrete implementations (repositories, external tools)
-- **Presentation**: API controllers and middlewares
-- **Main**: Application configuration and initialization
-
-## 🔧 Technologies Used
-
-- **Node.js** and **TypeScript**
-- **Express**: Web Framework
-- **AWS DynamoDB**: NoSQL Database
-- **Jest**: Testing Framework
-- **Docker**: Containerization
-- **LocalStack**: Emulation of AWS services locally
-- **New Relic**: Performance Monitoring
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v14+)
-- Docker and Docker Compose
-
-### Installing and Running Locally
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/seu-usuario/serverless-order-processing.git
-   cd serverless-order-processing
-   ```
-
-2. Install the dependencies:
-   ```bash
-   npm install
-   ```
-
-3.Run the local environment with Docker Compose:
-   ```bash
-   docker-compose up
-   ```
-
-4. The API will be available on: `http://localhost:3000`
-
-## 📊API Endpoints (Local Environment Only)
-
-### Authentication
-- `POST /api/login`: User Login
-
-
-### Users
-- `GET /api/users`: List all users
-- `GET /api/users/:id`: Search user by ID
-
-### Products
-- `GET /api/products`: List all products
-- `POST /api/products`: Create new product
-- `GET /api/products/:id`: Search product by ID
-- `PUT /api/products/:id`: Update product
-- `DELETE /api/products/:id`: Remove product
-
-### Orders
-- `GET /api/orders`: List all orders
-- `POST /api/orders`: Create new order
-- `GET /api/orders/:id`: Search order by ID
-- `DELETE /api/orders/:id`: Remove order
-
-## 🧪 Tests
-
-The project includes unit and integration tests:
-
-```bash
-# Run all tests
-npm test
-
-# Run only unit tests
-npm run test:unit
-
-# Run only integration tests
-npm run test:integration
+### System Architecture
+```
+┌─────────────────┐    ┌─────────────────┐    ┌──────────────────┐
+│   Lambda        │    │   SQS Queues    │    │   API            │
+│   (Order        │    │                 │    │                  │
+│   Creation)     │───►│ • Order Queue   │───►│                  │
+│                 │    │ • Dead Letter Q │    │ • Users API      │
+│ • Create Orders │    │ • Priority Queue│    │ • Products API   │
+│ • Send to SQS   │    │                 │    │ • Orders API     │
+└─────────────────┘    └─────────────────┘    │ • Queue Consumer │
+         │                       │            └──────────────────┘
+         ▼                       ▼                       │
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   DynamoDB      │    │   Worker Pool   │    │   Monitoring    │
+│                 │    │   (Processing)  │    │                 │
+│ • Users Table   │◄──►│                 │◄──►│ • New Relic     │
+│ • Products Table│    │ • Order Worker  │    │ • CloudWatch    │
+│ • Orders Table  │    │ • Retry Logic   │    │ • Metrics       │
+└─────────────────┘    │ • Error Handling│    └─────────────────┘
+                       └─────────────────┘
 ```
 
-## 🛠️ Development Environment
+### Clean Architecture Layers
+```
+┌─────────────────────────────────────────┐
+│              Presentation               │
+│         (Controllers, Routes)           │
+├─────────────────────────────────────────┤
+│                Use Cases                │
+│         (Business Logic)                │
+├─────────────────────────────────────────┤
+│              Domain Layer               │
+│        (Entities, Interfaces)           │
+├─────────────────────────────────────────┤
+│             Infrastructure              │
+│    (Database, External Services)        │
+└─────────────────────────────────────────┘
+```
 
-The project uses Docker Compose to set up a local development environment that includes:
-- Node.js API
-- LocalStack to emulate AWS services (DynamoDB, EC2)
+## ⚡ Features
 
-### Future Development
+### Core Features
+- ✅ **User Management** - Registration, authentication, profile management
+- ✅ **Product Catalog** - CRUD operations with inventory tracking
+- ✅ **Order Processing** - Order creation, status tracking, history
+- ✅ **Asynchronous Processing** - SQS-based order workflow
+- ✅ **Real-time Monitoring** - New Relic integration
 
-Currently in planning:
-- Deployment on AWS Lambda
-- CI/CD setup
-- Deploy to production environment
+### Advanced Features  
+- 🔒 **JWT Authentication** - Secure token-based authentication
+- 📊 **Performance Monitoring** - Application metrics and alerts
+- 🔄 **Retry Logic** - Automatic retry with exponential backoff
+- 🚨 **Error Handling** - Comprehensive error tracking and logging
+- 📈 **Scalability** - Auto-scaling based on demand
 
-## 📘 License
+## 🔧 Technology Stack
 
-This project is licensed under the ISC license.
+### Core Technologies
+| Category | Technology | Version | Purpose |
+|----------|------------|---------|---------|
+| **Runtime** | Node.js | ≥14.0 | JavaScript runtime |
+| **Language** | TypeScript | ^5.7 | Type-safe development |
+| **Framework** | Express.js | ^4.21 | Web application framework |
+| **Database** | DynamoDB | Latest | NoSQL database |
+| **Queue** | Amazon SQS | Latest | Message processing |
+| **Computing** | AWS Lambda | Latest | Serverless functions |
+
+### Development Tools
+| Tool | Version | Purpose |
+|------|---------|---------|
+| Jest | ^29.7 | Testing framework |
+| ESLint | ^9.21 | Code linting |
+| Docker | Latest | Containerization |
+| LocalStack | Latest | Local AWS emulation |
+| GitHub Actions | Latest | CI/CD pipeline |
+
+### Monitoring & Observability
+- **New Relic** - Application performance monitoring
+- **CloudWatch** - Logs and metrics
+- **AWS X-Ray** - Distributed tracing (planned)
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js ≥14.0
+- Docker & Docker Compose
+- AWS CLI (for production deployment)
+- Git
+
+### 1. Clone & Install
+```bash
+# Clone repository
+git clone https://github.com/username/serverless-order-processing.git
+cd serverless-order-processing
+
+# Install dependencies
+npm install
+```
+
+### 2. Environment Setup
+```bash
+# Copy environment template
+cp .env.example .env
+
+# Configure your environment variables
+# Required: JWT_SECRET, NEW_RELIC_LICENSE_KEY
+```
+
+### 3. Start Development Environment
+```bash
+# Start complete development stack
+make dev
+
+# Alternative: Manual start
+docker-compose up -d
+make setup
+```
+
+### 4. Verify Installation
+```bash
+# Check API health
+curl http://localhost:3000/
+
+# Run tests
+npm test
+
+# Check infrastructure
+make status
+```
+
+**🎉 Your API is now running at `http://localhost:3000`**
+
+## 📚 API Documentation
+
+### Authentication
+All protected endpoints require JWT token in Authorization header:
+```
+Authorization: Bearer <your_jwt_token>
+```
+
+### Endpoints Overview
+
+#### Authentication
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| POST | `/api/login` | User authentication | No |
+
+#### Users
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | `/api/users` | List all users | Yes |
+
+#### Products
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | `/api/products` | List all products | No |
+| POST | `/api/products` | Create new product | Yes |
+| GET | `/api/products/:id` | Get product by ID | Yes |
+| GET | `/api/products/name/:name` | Get product by name | Yes |
+| DELETE | `/api/products/:id` | Delete product | Yes |
+
+#### Orders
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | `/api/orders` | List orders | Yes |
+| POST | `/api/orders` | Create new order | Yes |
+| GET | `/api/orders/:id` | Get order by ID | Yes |
+| DELETE | `/api/orders/:id` | Cancel order | Yes |
+| POST | `/api/orders/process-queue` | Manual queue processing | Yes |
+
+### Example Requests
+
+#### Create Order
+```bash
+curl -X POST http://localhost:3000/api/orders \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "items": ["product-id-1", "product-id-2"]
+  }'
+```
+
+#### Response Format
+```json
+{
+  "statusCode": 201,
+  "message": "Order created successfully",
+  "data": {
+    "id": "order-id",
+    "customerId": "customer-id",
+    "items": ["product-id-1", "product-id-2"],
+    "status": "PENDING",
+    "createdAt": "2024-01-15T10:30:00Z"
+  }
+}
+```
+
+## 🧪 Testing
+
+### Test Structure
+```
+tests/
+├── unit/           # Unit tests
+├── integration/    # Integration tests
+├── http/           # HTTP client tests
+└── utils/          # Test utilities
+```
+
+### Running Tests
+```bash
+# Run all tests with coverage
+npm test
+
+# Run specific test types
+npm run test:unit
+npm run test:integration
+
+# Watch mode for development
+npm test -- --watch
+```
+
+### Test Commands via Make
+```bash
+# Comprehensive testing
+make test
+
+# Specific test suites
+make test-auth      # Authentication tests
+make test-sqs       # SQS processing tests
+make test-api       # API endpoint tests
+```
+
+### Coverage Reports
+- HTML reports: `coverage/lcov-report/index.html`
+- Coverage threshold: 80% minimum
+- Automated coverage reporting via CI/CD
+
+## 🚢 Deployment
+
+### Local Development
+```bash
+# Start development environment
+make dev
+
+# Reset environment
+make reset
+
+# View logs
+make logs
+```
+
+### Staging Deployment
+```bash
+# Deploy to staging
+make deploy-staging
+
+# Deploy specific components
+make deploy-infrastructure ENV=staging
+make deploy-api ENV=staging
+make deploy-lambda ENV=staging
+```
+
+### Production Deployment
+```bash
+# Full production deployment
+make deploy-prod
+
+# Infrastructure only
+make deploy-infrastructure ENV=production
+
+# Rollback if needed
+make rollback ENV=production COMPONENT=api VERSION=v1.2.3
+```
+
+### Environment Variables
+
+#### Required
+- `JWT_SECRET` - JWT signing secret
+- `NEW_RELIC_LICENSE_KEY` - New Relic monitoring
+
+#### Optional
+- `NODE_ENV` - Environment (development/staging/production)
+- `PORT` - API port (default: 3000)
+- `AWS_REGION` - AWS region (default: us-east-1)
+
+### CI/CD Pipeline
+- **GitHub Actions** workflows for automated testing
+
+## 📊 Monitoring
+
+### Application Monitoring
+- **New Relic** - Performance metrics, error tracking, transaction tracing
+- **CloudWatch** - AWS service metrics and logs
+
+## 📁 Project Structure
+
+```
+serverless-order-processing/
+├── lambdas/                # AWS Lambda functions
+├── scripts/                # Automation scripts
+    |── deploy/                 # Deployment configurations
+├── src/
+│   ├── domain/              # Business logic and entities
+│   ├── use-cases/           # Application use cases
+│   ├── infrastructure/      # External services integration
+│   ├── presentation/        # Controllers and routes
+│   ├── main/               # Application configuration
+│   └── config/             # Configuration files
+├── tests/                  # Test files
+├── docs/                   # Documentation
+└── .github/               # GitHub workflows
+```
