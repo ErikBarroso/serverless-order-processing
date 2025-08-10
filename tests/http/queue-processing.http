@@ -1,11 +1,15 @@
 @baseUrl = http://localhost:3000
+
+@urlAWS = http://13.58.230.90:3000
+
 @lambdaUrl = https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0ODkwNTMzNSwiZXhwIjoxNzQ4OTA4OTM1fQ.5G1xEP64MCWTUB9THSIYNuocuqAFOC7f3_t6YDlDlHU
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0OTA1MDgwOCwiZXhwIjoxNzQ5MDU0NDA4fQ.fFNyk2QaRYXBzxf8PPh_4mzXtcq2I_kUsZummDFRgVM
 
 ### 1. Criar order via Lambda (envia para SQS)
 POST {{lambdaUrl}}
 Content-Type: application/json
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 {
     "items": [
@@ -32,6 +36,16 @@ Authorization: {{token}}
 ###
 POST {{baseUrl}}/api/orders/worker/start
 Authorization: {{token}}
+
+###
+GET {{urlAWS}}/api/orders
+Authorization: {{token}}
+
+###
+POST {{urlAWS}}/api/orders/process-queue
+Content-Type: application/json
+Authorization: {{token}}
+
 
 ### Fluxo de Teste Completo:
 # 1. Pare a API (Ctrl+C)
