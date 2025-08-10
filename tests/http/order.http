@@ -1,8 +1,8 @@
 
 @url_lambd = https://1t6fkph8b7.execute-api.us-east-2.amazonaws.com/prod/create-order
-@urlAWS = http://18.223.180.26:3000
+@urlAWS = http://18.191.207.7:3000
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExZjIzMjkxLWZiYmItNGU1Yy04NTQ4LTA4YTc5MzI5NWMyMCIsImlhdCI6MTc0ODkwNTMzNSwiZXhwIjoxNzQ4OTA4OTM1fQ.5G1xEP64MCWTUB9THSIYNuocuqAFOC7f3_t6YDlDlHU
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0ODk4MTAwNywiZXhwIjoxNzQ4OTg0NjA3fQ.k8PioUVR2L8eGvQHqBDvq42jefJjgFcl-DAq1C7i85U
 
 ###
 GET http://localhost:3000
@@ -22,7 +22,7 @@ Authorization: {{token}}
 ###
 POST {{url_lambd}}
 Content-Type: application/json
-Authorization: {{token}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyZGNjOWNhLTBlMzgtNDYwNS1hZmM1LTM0MGRkZTFmNDg0MSIsImlhdCI6MTc0ODk4MTAwNywiZXhwIjoxNzQ4OTg0NjA3fQ.k8PioUVR2L8eGvQHqBDvq42jefJjgFcl-DAq1C7i85U
 
 {
     "items": [
